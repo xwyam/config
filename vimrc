@@ -1,4 +1,4 @@
-
+﻿
 " .vimrc
 " See: http://vimdoc.sourceforge.net/htmldoc/options.html for details
 
@@ -200,6 +200,8 @@ let g:vim_markdown_folding_disabled=1
 """"""""""""""""""""""""""""""""
 
 if has("autocmd")
+
+  autocmd FileType python setlocal tabstop=4 shiftwidth=4 backspace=4
 
   " Save the cursor localtion
   autocmd BufReadPost *
