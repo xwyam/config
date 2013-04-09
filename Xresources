@@ -1,0 +1,18 @@
+! xterm
+xterm*locale: true
+xterm*geometry: 80x25
+xterm*borderWidth: 0
+xterm*scrollBar: true
+!xterm*rightScrollBar: true
+xterm*toolBar: false
+xterm*termName: xterm-256color
+xterm*background: black
+xterm*foreground: white
+!xterm*utf8: 2
+!xterm*font: -efont-Tamsyn-medium-r-normal-*-20-*-*-*-*-*-*-*
+!xterm*font1: -efont-WenQuanYi Bitmap Song-medium-r-normal-*-20-*-*-*-*-*-*-*
+xterm*fontMenu*fontdefault*Label: Default
+xterm*faceName: Tamsyn: antialias=true
+xterm*faceNameDoublesize: WenQuanYi Bitmap Song: antialias=false
+xterm*faceSize: 16
+xterm*cjkWidth: false

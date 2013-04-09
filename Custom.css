@@ -1,0 +1,16 @@
+@charset "utf-8";
+b {
+  font-family: "nui", "WenQuanYi Micro Hei" !important;
+}  /** For 163 Mail */
+
+span {
+  font-family: "Octicons Regular", "WenQuanYi Micro Hei" !important;
+}  /** For GitHub */
+
+.W8_fonticons {
+  font-family: "w8icon-webfont", "WenQuanYi Micro Hei" !important;
+}  /** For Weibo */
+
+* {
+  font-family: "WenQuanYi Micro Hei" !important;
+}

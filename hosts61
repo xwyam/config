@@ -1,0 +1,104 @@
+###########################################################
+###########################################################
+#########                                       ###########
+#########    This hosts list is from xw_y_am.   ###########
+#########                                       ###########
+###########################################################
+###########################################################
+
+127.0.0.1 xwyam
+127.0.0.1 xwyam-laptop
+127.0.1.1 xwyam-laptop.xwyamdomain
+
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+
+###########################################################
+######################               ######################
+######################      DIY      ######################
+######################               ######################
+###########################################################
+
+
+127.0.0.1	xw-y-am.net
+
+
+#74.125.39.99	chrome.google.com
+#74.125.39.99	clients2.google.com
+
+#221.12.127.190 www.cnbeta.com
+#121.195.178.58 mail.163.com
+#119.75.220.17 baike.baidu.com
+#208.80.152.201 zh.wikipedia.org
+#125.90.93.35 bbs.badmintoncn.com
+
+#58.205.210.237 www.renren.com
+#58.205.210.233 www.renren.com
+#58.205.210.234 www.renren.com
+#58.205.210.235 www.renren.com
+#58.205.210.236 www.renren.com
+
+#121.194.7.242 www.taobao.com
+#121.194.7.251 www.taobao.com
+#121.194.7.252 www.taobao.com
+#121.194.7.241 www.taobao.com
+#110.75.130.21 www.alipay.com
+
+#61.135.179.158 map.sogou.com
+#61.135.179.159 map.sogou.com
+#61.135.179.187 map.sogou.com
+#61.135.179.189 map.sogou.com
+
+
+###########################################################
+
+##一些linux相关的
+
+##archlinux
+#66.211.214.131 www.archlinux.org
+#176.9.18.112 wiki.archlinux.org
+#2a01:4f8:150:1261::2 wiki.archlinux.org
+#208.92.232.29 aur.archlinux.org
+#176.9.18.112 bbs.archlinux.org ##brynhild.archlinux.org
+2a01:4f8:150:1261::2 bbs.archlinux.org
+
+##fedora
+#152.19.134.142 fedoraproject.org
+#209.132.181.15 fedoraproject.org
+#213.175.193.205 fedoraproject.org
+#66.35.62.162 fedoraproject.org
+#85.236.55.5 fedoraproject.org
+#140.211.169.196 fedoraproject.org
+#2610:28:3090:3001:dead:beef:cafe:fed3 fedoraproject.org
+
+##ubuntu
+#91.189.90.41 www.ubuntu.com
+#184.22.242.66 www.ubuntu.com.cn
+#184.22.242.66 forum.ubuntu.com.cn
+#184.22.242.66 wiki.ubuntu.com.cn
+
+
+##中国科学技术大学开源镜像
+#2001:da8:d800:95::110 mirrors.ustc.edu.cn(ipv6)
+#202.38.95.110 mirrors.ustc.edu.cn(ipv4)
+
+##北京交通大学镜像
+#2001:da8:205::58 mirror6.bjtu.edu.cn
+#202.112.154.58 mirror.bjtu.edu.cn
+
+##163开源镜像
+#123.58.173.106 mirrors.163.com
+#123.58.173.89 mirrors.163.com #备用
+
+##anl mirrors
+2620:0:dc0:1800:214:4fff:fe7d:1b9 mirror.anl.gov
+
+
+
+

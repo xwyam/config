@@ -1,0 +1,110 @@
+# for Arch
+#
+#
+# Conky, a system monitor, based on torsmo
+#
+# Any original torsmo code is licensed under the BSD license
+#
+# All code written since the fork of torsmo is licensed under the GPL
+#
+# Please see COPYING for details
+#
+# Copyright (c) 2004, Hannu Saransaari and Lauri Hakkarainen
+# Copyright (c) 2005-2010 Brenden Matthews, Philip Kovacs, et. al. (see AUTHORS)
+# All rights reserved.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+alignment top_right
+background yes
+border_width 1
+cpu_avg_samples 2
+default_color white
+default_outline_color white
+default_shade_color white
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+use_xft yes
+xftfont Morpheus:size=11
+gap_x 10
+gap_y 20
+minimum_size 185 0
+maximum_width 250
+default_bar_size 60 8
+net_avg_samples 2
+no_buffers yes
+out_to_console no
+out_to_stderr no
+override_utf8_locale yes
+extra_newline no
+own_window normal
+own_window_class Conky
+own_window_argb_visual true
+own_window_transparent true
+stippled_borders 0
+update_interval 1.0
+uppercase no
+use_spacer none
+show_graph_scale no
+show_graph_range no
+
+TEXT
+${voffset 0}${font Monkey\-Fingers:size=13}Time ${font} $hr
+${font The Sans Mono Condensed\-:style=Bold:size=30}${alignc}${time %Y-%m-%d}${font}
+${font STHupo:size=45:style=Bold}${alignc}${time %H:%M:%S}${font}
+${font Monkey\-Fingers:size=13}System Information ${font} $hr
+${alignc}$nodename - $sysname $kernel
+# on $machine
+CPU: ${alignr} Intel(R) Core2 Duo CPU T5850
+# Frequency: ${alignr} 2167 MHz
+ OS: ${alignr} ${exec cat /etc/issue | sed '/^[\ \t]*$/d' | sed 's/\ \\.*$//g'}
+${font Monkey\-Fingers:size=13}Running State ${font} $hr
+ Uptime:${alignr} $uptime
+ CPU Usage:             CPU1 ${alignr} ${cpu cpu1}% ${cpubar cpu1 4}
+                                      CPU2 ${alignr} ${cpu cpu2}% ${cpubar cpu2 4}
+ RAM Usage:${alignr} $memperc% ${membar 4}
+         ${processes} processes ${alignr} $mem / $memmax
+ CPU Temperature: ${alignr} ${acpitemp}°C
+${font Monkey\-Fingers:size=13}Storage State ${font} $hr
+ Harddisk Usage:
+     /boot ${alignr} ${fs_used /boot} / ${fs_size /boot} ${fs_bar 4 /boot}
+     / ${alignr} ${fs_used /} / ${fs_size /} ${fs_bar 4 /}
+     swap ${alignr} $swap / $swapmax ${swapbar 4}
+     /var ${alignr} ${fs_used /var} / ${fs_size /var} ${fs_bar 4 /var}
+     /opt ${alignr} ${fs_used /opt} / ${fs_size /opt} ${fs_bar 4 /opt}
+     /home ${alignr} $color${fs_used /home} / ${fs_size /home} ${fs_bar 4  /home}
+ Disk Activities:
+ Read: $diskio_read ${alignr} Write: $diskio_write
+ ${diskiograph_read /dev/sda 20,120 000000}  ${diskiograph_write /dev/sda 20,120 000000}
+${font Monkey\-Fingers:size=13}Network State ${font} $hr
+${if_existing /proc/net/route eth0} Network Interface: ${alignr} eth0
+ MAC Address: ${alignr}  ${exec ifconfig eth0 | grep '00:2' | sed -e 's/^.*00\:/00\:/' | sed -e 's/\ .*$//'}
+ IPv4 Address: ${alignr} ${addr eth0}
+# IPv6 Address:
+# ${font Morpheus:size=10} ${alignr} ${exec ifconfig eth0 | grep 'Global' | sed '1!d' | sed -e 's/^\ *inet6\ .*:\ //' | sed -e 's/\ .*$//'}${font}
+ Up: ${upspeed eth0} ${alignr} Down:${downspeed eth0}
+ ${upspeedgraph eth0 20,120} ${alignr}${downspeedgraph eth0 20,120}${color}
+ Total: ${totalup eth0} ${alignr} Total: ${totaldown eth0}${color}
+${else}${if_existing /proc/net/route wlan0} Network Interface: ${alignr} wlan0
+ MAC Address: ${alignr} ${exec ifconfig wlan0 | grep '00:2' | sed -e 's/^.*00\:/00\:/' | sed -e 's/\ .*$//'}
+ ESSID: ${alignr} ${exec iwconfig wlan0 | grep 'ESSID' | sed 's/"//g' | sed 's/^.*://'}
+ IPv4 Address: ${alignr} ${addr wlan0}
+ Up: ${upspeed wlan0} ${alignr} Down:${downspeed wlan0}
+ ${upspeedgraph wlan0 20,120} ${alignr}${downspeedgraph wlan0 20,120}${color}
+ Total: ${totalup wlan0} ${alignr} Total: ${totaldown wlan0}${color}
+${else} Network Interface: ${alignr} lo
+ IPv4 Address: ${alignr} ${addr lo}
+${endif}
