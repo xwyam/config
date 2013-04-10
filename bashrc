@@ -12,9 +12,10 @@ export TIME_STYLE="+%Y-%m-%d %H:%M:%S"
 
 
 # alias
+alias sudo='sudo '
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias pacman='pacman --color=always'
+alias pacman='pacman --color=auto'
 
 alias ll='ls -lF'
 alias la='ls -AF'
