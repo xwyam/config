@@ -27,7 +27,7 @@ colors
 
 
 PROMPT="%{[1;37m%}(^_^)%{[1;32m%}%~ %{[1;33m%}>%{$reset_color%} "
-#RPROMPT=" %{[1;33m%}>%{$reset_color%} "
+PROMPT2=" %{[1;33m%}>%{$reset_color%} "
 
 
 
