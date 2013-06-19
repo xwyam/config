@@ -1,6 +1,6 @@
 
 # Alias
-alias sudo='sudo '
+alias dir='dir -1'
 alias ls='ls --color=auto'
 alias la='ls -aF'
 alias ll='ls -lF'

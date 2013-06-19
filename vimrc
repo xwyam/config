@@ -98,3 +98,18 @@ let Tlist_File_Fold_Auto_Close=1
 
 " for python_ifold
 "set foldmethod=indent
+
+
+
+if has("autocmd")
+
+  au BufRead,BufNewFile *.{md} set filetype=mkd
+
+  " save the cursor localtion
+  autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+
+endif
+
