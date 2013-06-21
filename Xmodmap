@@ -1,0 +1,11 @@
+keycode   9 = grave asciitilde grave asciitilde
+keycode  22 = backslash bar backslash bar
+keycode  49 = Escape NoSymbol Escape
+keycode  51 = BackSpace BackSpace BackSpace BackSpace NoSymbol NoSymbol Terminate_Server
+
+remove Lock = Caps_Lock
+remove Control = Control_L
+keysym Control_L = Caps_Lock
+keysym Caps_Lock = Control_L
+add Lock = Caps_Lock
+add Control = Control_L
