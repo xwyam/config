@@ -90,7 +90,13 @@ ${font Monkey\-Fingers:size=13}Storage State ${font} $hr
  Read: $diskio_read ${alignr} Write: $diskio_write
  ${diskiograph_read /dev/sda 20,120 000000}  ${diskiograph_write /dev/sda 20,120 000000}
 ${font Monkey\-Fingers:size=13}Network State ${font} $hr
-${if_existing /proc/net/route eth0} Network Interface: ${alignr} eth0
+${if_existing /proc/net/route ppp0} Network Interface: ${alignr} ppp0
+ MAC Address: ${alignr}  ${exec ifconfig eth0 | grep '00:2' | sed -e 's/^.*00\:/00\:/' | sed -e 's/\ .*$//'}
+ IPv4 Address: ${alignr} ${addr ppp0}
+ Up: ${upspeed ppp0}/s ${alignr} Down:${downspeed ppp0}/s
+ ${upspeedgraph ppp0 20,120} ${alignr}${downspeedgraph ppp0 20,120}${color}
+ Total: ${totalup ppp0} ${alignr} Total: ${totaldown ppp0}${color}
+${else}${if_existing /proc/net/route eth0} Network Interface: ${alignr} eth0
  MAC Address: ${alignr}  ${exec ifconfig eth0 | grep '00:2' | sed -e 's/^.*00\:/00\:/' | sed -e 's/\ .*$//'}
  IPv4 Address: ${alignr} ${addr eth0}
 # IPv6 Address:
