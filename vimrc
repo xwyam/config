@@ -77,17 +77,24 @@ set mouse=a         " Enable the use of the mouse.
 
 set t_Co=256        " colorful vim
 
+set laststatus=2
+
+
+
+
+filetype plugin indent on
+syntax on
+
+
+
 autocmd FileType python set makeprg=python\ %
 autocmd FileType cpp set makeprg=g\+\+\ %\ -o\ %<;\./%<
 autocmd FileType c set makeprg=gcc\ %\ -o\ %<;\./%<
 autocmd FileType fortran set makeprg=gfortran\ %\ -o\ %<;\./%<
 
 
-map <F2> :%s/\s*$//g<cr>:noh<cr> " Remove the space appear in line tail.
-
-
-filetype plugin indent on
-syntax on
+" Remove the space appear in line tail.
+map <F2> :%s/\s*$//g<cr>:noh<cr>
 
 
 " for taglist
@@ -95,9 +102,6 @@ let Tlist_Auto_Open=0
 let Tlist_WinWidth=20
 let Tlist_Use_Left_Window=1
 let Tlist_File_Fold_Auto_Close=1
-
-" for python_ifold
-"set foldmethod=indent
 
 
 
@@ -112,4 +116,5 @@ if has("autocmd")
     \ endif
 
 endif
+
 
