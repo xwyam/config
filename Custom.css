@@ -8,6 +8,10 @@ span {
   font-family: "github-octicons", "WenQuanYi Micro Hei" !important;
 }  /** For GitHub */
 
+i.icon {
+  font-family: "icologo", "WenQuanYi Micro Hei" !important;
+}  /** For 115 */
+
 * {
   font-family: "WenQuanYi Micro Hei" !important;
 }
