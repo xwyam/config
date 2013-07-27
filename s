@@ -1,5 +1,6 @@
 # Virtualbox
 sudo modprobe vboxdrv
+sudo modprobe vboxnetflt
 
 # ntp time update
 #sudo ntpdate 3.cn.pool.ntp.org
