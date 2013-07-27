@@ -87,14 +87,39 @@ syntax on
 
 
 
-autocmd FileType python set makeprg=python\ %
-autocmd FileType cpp set makeprg=g\+\+\ %\ -o\ %<;\./%<
-autocmd FileType c set makeprg=gcc\ %\ -o\ %<;\./%<
-autocmd FileType fortran set makeprg=gfortran\ %\ -o\ %<;\./%<
+
+" set compliers
+"autocmd FileType python set makeprg=python\ %
+"autocmd FileType cpp set makeprg=g\+\+\ %\ -o\ %<;\./%<
+"autocmd FileType c set makeprg=gcc\ %\ -o\ %<;\./%<
+"autocmd FileType fortran set makeprg=gfortran\ %\ -o\ %<;\./%<
 
 
+
+
+" auto complete
+"autocmd FileType c set omnifunc=ccomplete#Complete
+"autocmd FileType cpp set omnifunc=cppcomplete#Complete
+"autocmd FileType css set omnifunc=csscomplete#Complete
+"autocmd FileType html set omnifunc=htmlcomplete#Complete
+"autocmd FileType java set omnifunc=javacomplete#Complete
+"autocmd FileType javascript set omnifunc=javascriptcomplete#Complete
+"autocmd FileType php set omnifunc=phpcomplete#Complete
+"autocmd FileType python set omnifunc=pythoncomplete#Complete
+
+
+
+
+" Mine own short cut
+"
+" Add Space after block
+map fd i <esc>ll
 " Remove the space appear in line tail.
-map <F2> :%s/\s*$//g<cr>:noh<cr>
+map rs :%s/\s*$//g<cr>:noh<cr>
+" for buf explorer
+map be \be
+
+
 
 
 " for taglist
@@ -102,6 +127,9 @@ let Tlist_Auto_Open=0
 let Tlist_WinWidth=20
 let Tlist_Use_Left_Window=1
 let Tlist_File_Fold_Auto_Close=1
+map tl :TlistToggle<cr>
+
+
 
 
 
