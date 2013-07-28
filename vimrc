@@ -1,8 +1,12 @@
 " .vimrc
 " See: http://vimdoc.sourceforge.net/htmldoc/options.html for details
 
-" 多字节字符支持，中文用户请启用这一行：
+
+""""""""""""""""""""""""""""""""
+"             Set              "
+""""""""""""""""""""""""""""""""
 set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1,gbk
+                    " 多字节字符支持，中文用户请启用这一行：
        
 set tabstop=2       " Number of spaces that a <Tab> in the file counts for.
  
@@ -77,71 +81,108 @@ set mouse=a         " Enable the use of the mouse.
 
 set t_Co=256        " colorful vim
 
-set laststatus=2
+set laststatus=2    " set status bar
+                    "
+                    " 0     always hide
+                    " 1     display when it is multi-windows
+                    " 2     always display
+
+"set foldenable      " code folden
+"set foldmethod=indent
+"set foldcolumn=4
+
+set nocompatible
 
 
 
 
+""""""""""""""""""""""""""""""""
+"             CMD              "
+""""""""""""""""""""""""""""""""
 filetype plugin indent on
 syntax on
 
-
-
-
-" set compliers
-"autocmd FileType python set makeprg=python\ %
-"autocmd FileType cpp set makeprg=g\+\+\ %\ -o\ %<;\./%<
-"autocmd FileType c set makeprg=gcc\ %\ -o\ %<;\./%<
-"autocmd FileType fortran set makeprg=gfortran\ %\ -o\ %<;\./%<
+" For markdown
+au BufRead,BufNewFile *.{md} set filetype=mkd
 
 
 
 
-" auto complete
-"autocmd FileType c set omnifunc=ccomplete#Complete
-"autocmd FileType cpp set omnifunc=cppcomplete#Complete
-"autocmd FileType css set omnifunc=csscomplete#Complete
-"autocmd FileType html set omnifunc=htmlcomplete#Complete
-"autocmd FileType java set omnifunc=javacomplete#Complete
-"autocmd FileType javascript set omnifunc=javascriptcomplete#Complete
-"autocmd FileType php set omnifunc=phpcomplete#Complete
-"autocmd FileType python set omnifunc=pythoncomplete#Complete
 
 
+""""""""""""""""""""""""""""""""
+"             Map              "
+""""""""""""""""""""""""""""""""
 
-
-" Mine own short cut
-"
 " Add Space after block
 map fd i <esc>ll
+
 " Remove the space appear in line tail.
 map rs :%s/\s*$//g<cr>:noh<cr>
-" for buf explorer
-map be \be
+
+" For buf explorer
+"map be \be
+
+" For buftabs
+map bn :bnext<cr>
+map bp :bprev<cr>
+
+" For NERDTree
+map ft :NERDTree<cr>
 
 
 
 
-" for taglist
-let Tlist_Auto_Open=0
-let Tlist_WinWidth=20
-let Tlist_Use_Left_Window=1
+
+""""""""""""""""""""""""""""""""
+"           Plugins            "
+""""""""""""""""""""""""""""""""
+
+"        Taglist
+"let Tlist_Auto_Open=1
+let Tlist_WinWidth=25
+"let Tlist_WinHeight=100
+"let Tlist_Show_One_File=1
+"let Tlist_Use_Right_Window=1
+let Tlist_Use_SingleClick=1
+let Tlist_Compact_Format=1
+let Tlist_Exit_OnlyWindow=1
 let Tlist_File_Fold_Auto_Close=1
+let Tlist_GainFocus_On_ToggleOpen=1
 map tl :TlistToggle<cr>
 
+"        Supertab
+let g:SuperTabDefaultCompletionType="context"
+
+"        Powerline
+set encoding=utf8
+set langmenu=zh_CN.utf-8
+language messages zh_CN.utf-8
+let g:Powerline_symbols='fancy'
+let Powerline_symbols='compatible'
 
 
 
+
+
+
+""""""""""""""""""""""""""""""""
+"           Autocmd            "
+""""""""""""""""""""""""""""""""
 
 if has("autocmd")
 
-  au BufRead,BufNewFile *.{md} set filetype=mkd
-
-  " save the cursor localtion
+  " Save the cursor localtion
   autocmd BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
+
+  " Set compliers
+  autocmd FileType python set makeprg=python\ %
+  autocmd FileType cpp set makeprg=g\+\+\ %\ -o\ %<;\./%<
+  autocmd FileType c set makeprg=gcc\ %\ -o\ %<;\./%<
+  autocmd FileType fortran set makeprg=gfortran\ %\ -o\ %<;\./%<
 
 endif
 
