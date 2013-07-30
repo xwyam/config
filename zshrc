@@ -8,7 +8,11 @@ alias lla='ls -alF'
 
 alias grep='grep --color=auto'
 alias pacman='pacman --color=auto'
+alias w3m='w3m -cookie'
+alias date='date +"%F %T"'
+alias urxvt='urxvt -bg black -fg gray -fn ="xft:SimHei" +sb'
 
+eval `dircolors ~/.colors`
 
 # Command completion
 setopt AUTO_LIST
@@ -29,7 +33,12 @@ colors
 PROMPT="%{[1;37m%}(^_^)%{[1;32m%}%~ %{[1;33m%}>%{$reset_color%} "
 PROMPT2=" %{[1;33m%}>%{$reset_color%} "
 
+RPROMPT="%{[0;35m%}%D %*%{$reset_color%}"
 
+
+export HISTFILE=~/.zsh_history
+export HISTSIZE=10000
+export SAVEHIST=10000
 
 
 ## the part of completion system is from Archlinux /etc/zsh/zshrc
