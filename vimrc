@@ -118,7 +118,7 @@ au BufRead,BufNewFile *.{md} set filetype=mkd
 map fd i <esc>ll
 
 " Remove the space appear in line tail.
-map rs :%s/\s*$//g<cr>:noh<cr>
+map zs :%s/\s*$//g<cr>:noh<cr>
 
 " For buf explorer
 "map be \be
@@ -140,10 +140,11 @@ map ft :NERDTree<cr>
 
 "        Taglist
 "let Tlist_Auto_Open=1
+let Tlist_Auto_Update=1
 let Tlist_WinWidth=25
 "let Tlist_WinHeight=100
 "let Tlist_Show_One_File=1
-"let Tlist_Use_Right_Window=1
+let Tlist_Use_Right_Window=1
 let Tlist_Use_SingleClick=1
 let Tlist_Compact_Format=1
 let Tlist_Exit_OnlyWindow=1
