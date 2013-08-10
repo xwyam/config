@@ -119,16 +119,15 @@ map fd i <esc>ll
 
 " Remove the space appear in line tail.
 map zs :%s/\s*$//g<cr>:noh<cr>
+map zc :%s/\([,;]\)\ *\([^\s]\)/\1\ \2/g<cr>:noh<cr>
+map zn :%s/\([0-9a-zA-Z_]\)\([%^&*\-=+\|<>]\{1}=\?\)\([0-9a-zA-Z\-~*&$@_]\)/\1\ \2\ \3/g<cr>
 
-" For buf explorer
-"map be \be
-
-" For buftabs
+" For buffers
 map bn :bnext<cr>
-map bp :bprev<cr>
+map bp :bprevious<cr>
 
 " For NERDTree
-map ft :NERDTree<cr>
+map ft :NERDTreeToggle<cr>
 
 
 
