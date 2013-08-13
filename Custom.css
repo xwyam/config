@@ -8,6 +8,10 @@ span {
   font-family: "octicons", "WenQuanYi Micro Hei" !important;
 }  /** For GitHub */
 
+i.iconfont {
+  font-family: "rei", "WenQuanYi Micro Hei" !important;
+} /** For Taobao */
+
 i.icon {
   font-family: "icologo", "WenQuanYi Micro Hei" !important;
 }  /** For 115 */
