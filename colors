@@ -160,6 +160,7 @@ EXEC 01;32                   # This is for files with execute permission:
 .svgz 00;38;05;33
 .mng  00;38;05;33
 .pcx  00;38;05;33
+.ico  00;38;05;33
 
 # audio formats
 .aac  00;38;05;132
