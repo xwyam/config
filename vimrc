@@ -6,7 +6,7 @@
 "             Set              "
 """"""""""""""""""""""""""""""""
 set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1,gbk
-                    " 澶氬瓧鑺傚瓧绗︽敮鎸侊紝涓枃鐢ㄦ埛璇峰惎鐢ㄨ繖涓�琛岋細
+                    " 多字节字符支持，中文用户请启用这一行：
        
 set tabstop=2       " Number of spaces that a <Tab> in the file counts for.
  
@@ -120,11 +120,10 @@ map fd i <esc>ll
 " Remove the space appear in line tail.
 map zs :%s/\s*$//g<cr>:noh<cr>
 map zc :%s/\([,;]\)\ *\([^\s]\)/\1\ \2/g<cr>:noh<cr>
-map zn :%s/\([0-9a-zA-Z_]\)\([%^&*\-=+\|<>]\{1}=\?\)\([0-9a-zA-Z\-~*&$@_]\)/\1\ \2\ \3/g<cr>
+map zx :%s/\([0-9a-zA-Z_]\)\([%^&*\-=+\|<>]\{1}=\?\)\([0-9a-zA-Z\-~*$@_]\)/\1\ \2\ \3/g<cr>:noh<cr>
 
-" For buffers
-map bn :bnext<cr>
-map bp :bprevious<cr>
+" For buf explorer
+"map be \be
 
 " For NERDTree
 map ft :NERDTreeToggle<cr>
@@ -152,7 +151,7 @@ let Tlist_GainFocus_On_ToggleOpen=1
 map tl :TlistToggle<cr>
 
 "        Supertab
-let g:SuperTabDefaultCompletionType="context"
+"let g:SuperTabDefaultCompletionType="context"
 
 "        Powerline
 set encoding=utf8
@@ -179,11 +178,10 @@ if has("autocmd")
     \ endif
 
   " Set compliers
-  autocmd FileType python set makeprg=python\ %
-  autocmd FileType cpp set makeprg=g\+\+\ %\ -o\ %<;\./%<
-  autocmd FileType c set makeprg=gcc\ %\ -o\ %<;\./%<
-  autocmd FileType fortran set makeprg=gfortran\ %\ -o\ %<;\./%<
+  "autocmd FileType python set makeprg=python\ %
+  "autocmd FileType cpp set makeprg=g\+\+\ %\ -o\ %<;\./%<
+  "autocmd FileType c set makeprg=gcc\ %\ -o\ %<;\./%<
+  "autocmd FileType fortran set makeprg=gfortran\ %\ -o\ %<;\./%<
 
 endif
-
 
