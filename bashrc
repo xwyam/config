@@ -22,7 +22,8 @@ alias ll='ls -lF'
 alias la='ls -AF'
 alias lla='ls -alF'
 alias w3m='w3m -cookie'
-alias ss='sudo systemctl start httpd.service mysqld.service'
+alias urxvt='urxvt -bg black -fg gray -fn "xft:SimHei" +sb'
+alias date='date +"%F %T"'
 
 
 # Color
@@ -52,7 +53,7 @@ PS1='\[\e[1;37m\](^_^)\[\e[m\]\[\e[1;32m\]\w\[\e[m\] \[\e[1;33m\]>\[\e[m\] '
 PS2=' \[\e[1;33m\]>\[\e[m\] '
 
 # PS for Root
-#PS1='[\[\e[1;31m\]root\[\e[m\] \[\e[1;37m\]\w\[\e[m\]]\$ '
+#PS1='(\[\e[1;31m\]\u\[\e[m\])\[\e[1;37m\]\w\[\e[m\] \$ '
 #PS2=' > '
 
 
