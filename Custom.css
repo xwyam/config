@@ -8,9 +8,17 @@ span {
   font-family: "octicons", "WenQuanYi Micro Hei" !important;
 }  /** For GitHub */
 
+span.tmsg-ico {
+  font-family: "global-iconfont", "WenQuanYi Micro Hei" !important;
+}  /** For Taobao */
+
+span.iconfont {
+  font-family: "global-iconfont", "WenQuanYi Micro Hei" !important;
+}  /** For Taobao */
+
 i.iconfont {
-  font-family: "rei", "WenQuanYi Micro Hei" !important;
-} /** For Taobao */
+  font-family: "iconfont", "WenQuanYi Micro Hei" !important;
+}  /** For Taobao */
 
 i.icon {
   font-family: "icologo", "WenQuanYi Micro Hei" !important;
