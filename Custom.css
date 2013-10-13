@@ -4,7 +4,11 @@ b {
   font-family: "nui", "WenQuanYi Micro Hei" !important;
 }  /** For 163 Mail */
 
-span {
+span.octicon {
+  font-family: "octicons", "WenQuanYi Micro Hei" !important;
+}  /** For GitHub */
+
+span.mega-octicon {
   font-family: "octicons", "WenQuanYi Micro Hei" !important;
 }  /** For GitHub */
 
