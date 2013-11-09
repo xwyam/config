@@ -1,37 +1,46 @@
 @charset "utf-8";
 
-b {
-  font-family: "nui", "WenQuanYi Micro Hei" !important;
-}  /** For 163 Mail */
-
-span.octicon {
-  font-family: "octicons", "WenQuanYi Micro Hei" !important;
-}  /** For GitHub */
-
-span.mega-octicon {
-  font-family: "octicons", "WenQuanYi Micro Hei" !important;
-}  /** For GitHub */
-
-span.tmsg-ico {
-  font-family: "global-iconfont", "WenQuanYi Micro Hei" !important;
-}  /** For Taobao */
-
-span.iconfont {
-  font-family: "global-iconfont", "WenQuanYi Micro Hei" !important;
-}  /** For Taobao */
-
-i.iconfont {
-  font-family: "iconfont", "WenQuanYi Micro Hei" !important;
-}  /** For Taobao */
-
-i.icon {
-  font-family: "icologo", "WenQuanYi Micro Hei" !important;
-}  /** For 115 */
-
-s.icon {
-  font-family: "icologo", "WenQuanYi Micro Hei" !important;
-}  /** For 115 */
-
-* {
+span.noclass,
+b.noclass,
+i.noclass
+{
   font-family: "WenQuanYi Micro Hei" !important;
 }
+
+
+a,
+article,
+aside,
+body,
+command,
+datalist,
+details,
+div,
+footer,
+header,
+input,
+label,
+li,
+mark,
+menu,
+meter,
+nav,
+ol,
+option,
+p,
+section,
+select,
+strong,
+sub,
+sup,
+table,
+td,
+textarea,
+th,
+time,
+tr,
+ul
+{
+  font-family: "WenQuanYi Micro Hei" !important;
+}
+
