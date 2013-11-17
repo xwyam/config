@@ -1,14 +1,14 @@
 @charset "utf-8";
 
-span.noclass,
+a.noclass,
 b.noclass,
-i.noclass
+i.noclass,
+span.noclass
 {
   font-family: "WenQuanYi Micro Hei" !important;
 }
 
 
-a,
 article,
 aside,
 body,
