@@ -12,7 +12,6 @@ alias w3m='w3m -cookie'
 alias date='date +"%F %T"'
 alias urxvt='urxvt -bg black -fg gray -fn ="xft:SimHei" +sb'
 
-eval `dircolors ~/.colors`
 
 # Command completion
 setopt AUTO_LIST
@@ -24,21 +23,54 @@ compinit
 # PS
 autoload -U promptinit
 promptinit
+setopt prompt_subst
 
 # Color
 autoload -U colors
 colors
+eval `dircolors ~/.colors`
 
 
-PROMPT="%{[1;37m%}(^_^)%{[1;32m%}%~ %{[1;33m%}>%{$reset_color%} "
-PROMPT2=" %{[1;33m%}>%{$reset_color%} "
+# PROMPT
+X_FACE="(^_^)"
 
-RPROMPT="%{[0;35m%}%D %*%{$reset_color%}"
+if [[ "1" == "1" ]]; then
+  git_info() {
+    local gitrev=$(git rev-parse --git-dir 2>/dev/null)
+    if [[ "$gitrev" == "" ]]; then
+      echo ""
+    else
+      local git_rmt=$(git remote 2>/dev/null)
+      local git_brc=$(git branch 2>/dev/null | awk ' { print $2 } ')
+      echo "($git_rmt:$git_brc)"
+    fi
+  }
+
+  mid_space() {
+    local len
+    (( len = ${COLUMNS} - ${#${(%):-.$X_FACE %n@%M:%~20%D %*}} ))
+    printf " "%.0s {1..$len}
+  }
+
+  PROMPT='%{$fg_bold[white]%}$X_FACE%{$reset_color%} %{$fg_bold[cyan]%}%n@%M%{$reset_color%}%{$fg_bold[white]%}:%{$fg_bold[green]%}%~%{$reset_color%}$(mid_space)%{$fg_no_bold[magenta]%}20%D %*%{$reset_color%}
+ %{$fg_bold[yellow]%}==>%{$reset_color%} '
+  PROMPT2='   > '
+  RPROMPT='%{$fg_bold[blue]%}$(git_info)%{$reset_color%}'
+
+else
+
+  PROMPT='%{$fg_bold[white]%}$X_FACE%{$reset_color%}%{$fg_bold[green]%}%~%{$reset_color%} %{$fg_bold[yellow]%}=>%{$reset_color%} '
+  PROMPT2=' %{$fg_bold[yellow]%}>%{$reset_color%} '
+  RPROMPT='%{$fg_no_bold[magenta]%}20%D %*%{$reset_color%}'
+
+fi
 
 
+# History
 export HISTFILE=~/.zsh_history
 export HISTSIZE=10000
 export SAVEHIST=10000
+
 
 
 ## the part of completion system is from Archlinux /etc/zsh/zshrc
@@ -55,10 +87,8 @@ is42(){
     return 1
 }
 
-
-
 # completion system
-
+#
 # called later (via is4 && grmlcomp)
 # note: use 'zstyle' for getting current settings
 #         press ^xh (control-x h) for getting tags in context; ^x? (control-x ?) to run complete_debug with trace output
@@ -229,3 +259,4 @@ grmlcomp() {
 
 
 is4    && grmlcomp
+
