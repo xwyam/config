@@ -1,6 +1,5 @@
 @charset "utf-8";
 
-a.noclass,
 b.noclass,
 i.noclass,
 span.noclass
@@ -9,6 +8,7 @@ span.noclass
 }
 
 
+a,
 article,
 aside,
 body,
