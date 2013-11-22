@@ -84,7 +84,6 @@ ${font Monkey\-Fingers:size=13}Storage State ${font} $hr
      / ${alignr} ${fs_used /} / ${fs_size /} ${fs_bar 4 /}
      swap ${alignr} $swap / $swapmax ${swapbar 4}
      /var ${alignr} ${fs_used /var} / ${fs_size /var} ${fs_bar 4 /var}
-     /opt ${alignr} ${fs_used /opt} / ${fs_size /opt} ${fs_bar 4 /opt}
      /home ${alignr} $color${fs_used /home} / ${fs_size /home} ${fs_bar 4  /home}
  Disk Activities:
  Read: $diskio_read ${alignr} Write: $diskio_write
