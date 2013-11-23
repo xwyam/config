@@ -9,7 +9,7 @@ set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1,gbk
                     " 多字节字符支持，中文用户请启用这一行：
 
 set fileformat=unix " The format of the end of line.
-       
+
 set tabstop=2       " Number of spaces that a <Tab> in the file counts for.
  
 set shiftwidth=2    " Number of spaces to use for each step of (auto)indent.
