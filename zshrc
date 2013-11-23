@@ -52,10 +52,10 @@ if [[ "1" == "1" ]]; then
     printf " "%.0s {1..$len}
   }
 
-  PROMPT='%{$fg_bold[white]%}$X_FACE%{$reset_color%} %{$fg_bold[cyan]%}%n@%M%{$reset_color%}%{$fg_bold[white]%}:%{$fg_bold[green]%}%~%{$reset_color%}$(mid_space)%{$fg_no_bold[magenta]%}20%D %*%{$reset_color%}
+  PROMPT='%{$fg_bold[white]%}$X_FACE%{$reset_color%} %{$fg_bold[cyan]%}%n@%M%{$reset_color%}%{$fg_bold[white]%}:%{$fg_bold[green]%}%~%{$reset_color%}  %{$fg_bold[blue]%}$(git_info)%{$reset_color%}
  %{$fg_bold[yellow]%}==>%{$reset_color%} '
   PROMPT2='   > '
-  RPROMPT='%{$fg_bold[blue]%}$(git_info)%{$reset_color%}'
+  RPROMPT='%{$fg_no_bold[magenta]%}20%D %*%{$reset_color%}'
 
 else
 
