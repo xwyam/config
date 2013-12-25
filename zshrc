@@ -1,16 +1,17 @@
 
 # Alias
 alias dir='dir -1'
-alias ls='ls --color=auto'
+alias ls='ls --color=always'
 alias la='ls -AF'
 alias ll='ls -lF'
 alias lla='ls -alF'
 
-alias grep='grep --color=auto'
-alias pacman='pacman --color=auto'
+alias less='less -R'
+alias grep='grep --color=always'
+alias pacman='pacman --color=always'
 alias w3m='w3m -cookie'
 alias date='date +"%F %T"'
-alias urxvt='urxvt -bg black -fg gray -fn ="xft:SimHei" +sb'
+alias sudo='sudo '
 
 
 # Command completion

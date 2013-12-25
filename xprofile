@@ -1,7 +1,7 @@
 #export LANG=zh_CN.UTF-8
 #export LC_ALL="zh_CN.UTF-8"
 
-export XMODIFIERS=@im=yong
+export XMODIFIERS="@im=yong"
 export GTK_IM_MODULE="yong"
 export QT_IM_MODULE="yong"
-yong -d
+
