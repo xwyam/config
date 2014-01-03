@@ -1,18 +1,22 @@
 
+# Var
+PL="2"
+
 # Alias
 alias dir='dir -1'
-alias ls='ls --color=always'
+alias ls='ls --color=auto'
 alias la='ls -AF'
 alias ll='ls -lF'
 alias lla='ls -alF'
 
-alias less='less -R'
-alias grep='grep --color=always'
-alias pacman='pacman --color=always'
+alias grep='grep --color=auto'
+alias pacman='pacman --color=auto'
 alias w3m='w3m -cookie'
 alias date='date +"%F %T"'
-alias sudo='sudo '
 
+# Export
+export TIME_STYLE="+%Y-%m-%d %H:%M:%S"
+export LANG=zh_CN.UTF-8
 
 # Command completion
 setopt AUTO_LIST
@@ -35,7 +39,7 @@ eval `dircolors ~/.colors`
 # PROMPT
 X_FACE="(^_^)"
 
-if [[ "1" == "1" ]]; then
+if [[ $PL == "2" ]]; then
   git_info() {
     local gitrev=$(git rev-parse --git-dir 2>/dev/null)
     if [[ "$gitrev" == "" ]]; then
@@ -53,7 +57,7 @@ if [[ "1" == "1" ]]; then
     printf " "%.0s {1..$len}
   }
 
-  PROMPT='%{$fg_bold[white]%}$X_FACE%{$reset_color%} %{$fg_bold[cyan]%}%n@%M%{$reset_color%}%{$fg_bold[white]%}:%{$fg_bold[green]%}%~%{$reset_color%}  %{$fg_bold[blue]%}$(git_info)%{$reset_color%}
+  PROMPT='%{$fg_bold[white]%}$X_FACE%{$reset_color%} %{$fg_bold[red]%}%n%{$fg_bold[white]%} @ %{$fg_bold[cyan]%}%M%{$reset_color%}%{$fg_bold[white]%} : %{$fg_bold[green]%}%~%{$reset_color%}  %{$fg_bold[blue]%}$(git_info)%{$reset_color%}
  %{$fg_bold[yellow]%}==>%{$reset_color%} '
   PROMPT2='   > '
   RPROMPT='%{$fg_no_bold[magenta]%}20%D %*%{$reset_color%}'
@@ -260,4 +264,3 @@ grmlcomp() {
 
 
 is4    && grmlcomp
-
