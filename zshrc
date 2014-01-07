@@ -45,9 +45,9 @@ if [[ $PL == "2" ]]; then
     if [[ "$gitrev" == "" ]]; then
       echo ""
     else
-      local git_rmt=$(git remote 2>/dev/null)
-      local git_brc=$(git branch 2>/dev/null | awk ' { print $2 } ')
-      echo "($git_rmt:$git_brc)"
+      local git_cmt=$(git reflog 2>/dev/null | sed -n '1p' | awk '{print $1}')
+      local git_brc=$(git branch | grep '\*' 2>/dev/null | awk ' { print $2 } ')
+      echo "%{$fg_bold[blue]%}($git_brc:$git_cmt)%{$reset_color%}"
     fi
   }
 
@@ -57,7 +57,7 @@ if [[ $PL == "2" ]]; then
     printf " "%.0s {1..$len}
   }
 
-  PROMPT='%{$fg_bold[white]%}$X_FACE%{$reset_color%} %{$fg_bold[red]%}%n%{$fg_bold[white]%} @ %{$fg_bold[cyan]%}%M%{$reset_color%}%{$fg_bold[white]%} : %{$fg_bold[green]%}%~%{$reset_color%}  %{$fg_bold[blue]%}$(git_info)%{$reset_color%}
+  PROMPT='%{$fg_bold[white]%}$X_FACE%{$reset_color%} %{$fg_bold[red]%}%n%{$fg_bold[white]%}@%{$fg_bold[cyan]%}%M%{$reset_color%}%{$fg_bold[white]%}: %{$fg_bold[green]%}%~%{$reset_color%}  $(git_info)
  %{$fg_bold[yellow]%}==>%{$reset_color%} '
   PROMPT2='   > '
   RPROMPT='%{$fg_no_bold[magenta]%}20%D %*%{$reset_color%}'
