@@ -71,11 +71,11 @@ CPU: ${alignr} Intel(R) Core2 Duo CPU T5850
  OS: ${alignr} ${exec cat /etc/issue | sed '/^[\ \t]*$/d' | sed 's/\ \\.*$//g'}
 ${font Monkey\-Fingers:size=13}Running State ${font} $hr
  Uptime:${alignr} $uptime
+ CPU Temperature: ${alignr} ${acpitemp}°C
  CPU Usage:             CPU1 ${alignr} ${cpu cpu1}% ${cpubar cpu1 4}
                                       CPU2 ${alignr} ${cpu cpu2}% ${cpubar cpu2 4}
  RAM Usage:${alignr} $memperc% ${membar 4}
          ${processes} processes ${alignr} $mem / $memmax
- CPU Temperature: ${alignr} ${acpitemp}°C
 ${font Monkey\-Fingers:size=13}Storage State ${font} $hr
  Harddisk Usage:
      /boot ${alignr} ${fs_used /boot} / ${fs_size /boot} ${fs_bar 4 /boot}
