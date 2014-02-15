@@ -16,7 +16,6 @@ alias date='date +"%F %T"'
 
 # Export
 export TIME_STYLE="+%Y-%m-%d %H:%M:%S"
-export LANG=zh_CN.UTF-8
 
 # Command completion
 setopt AUTO_LIST
@@ -41,12 +40,12 @@ X_FACE="(^_^)"
 
 if [[ $PL == "2" ]]; then
   git_info() {
-    local gitrev=$(git rev-parse --git-dir 2>/dev/null)
+    local gitrev="$(git rev-parse --git-dir 2>/dev/null)"
     if [[ "$gitrev" == "" ]]; then
       echo ""
     else
-      local git_cmt=$(git reflog 2>/dev/null | sed -n '1p' | awk '{print $1}')
-      local git_brc=$(git branch | grep '\*' 2>/dev/null | awk ' { print $2 } ')
+      local git_cmt="$(git reflog 2>/dev/null | sed -n '1p' | awk '{print $1}')"
+      local git_brc="$(git branch 2>/dev/null | grep '^\*' | sed 's/^\*\ //')"
       echo "%{$fg_bold[blue]%}($git_brc:$git_cmt)%{$reset_color%}"
     fi
   }
@@ -91,6 +90,7 @@ is42(){
     [[ $ZSH_VERSION == 4.<2->* || $ZSH_VERSION == <5->* ]] && return 0
     return 1
 }
+
 
 # completion system
 #
@@ -264,3 +264,4 @@ grmlcomp() {
 
 
 is4    && grmlcomp
+
