@@ -9,10 +9,10 @@ alias la='ls -AF'
 alias ll='ls -lF'
 alias lla='ls -alF'
 
+alias sudo='sudo '
 alias grep='grep --color=auto'
 alias pacman='pacman --color=auto'
 alias w3m='w3m -cookie'
-alias date='date +"%F %T"'
 
 # Export
 export TIME_STYLE="+%Y-%m-%d %H:%M:%S"
