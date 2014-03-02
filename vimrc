@@ -170,6 +170,7 @@ let Tlist_GainFocus_On_ToggleOpen=1
 
 
 "        Powerline
+let $PYTHONPATH="/usr/lib/python3.3/site-packages"
 set encoding=utf8
 set langmenu=zh_CN.utf-8
 language messages zh_CN.utf-8
