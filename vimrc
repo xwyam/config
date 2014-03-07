@@ -138,6 +138,7 @@ map ze :FencView<cr>
 
 " For easymotion
 map zf \\w
+map zF \\b
 
 " For A
 map zH :AS<cr>
