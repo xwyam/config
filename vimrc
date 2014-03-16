@@ -95,7 +95,11 @@ set laststatus=2    " set status bar
 
 set noerrorbells    " Disable the error bell alert
 
-set sc              " Show partial comman keys in the status line.
+set showcmd         " Show partial comman keys in the status line.
+
+set noshowmode      " NO Show input mode
+
+set noswapfile      " No swap file
 
 
 
@@ -105,8 +109,6 @@ set sc              " Show partial comman keys in the status line.
 """"""""""""""""""""""""""""""""
 filetype plugin indent on
 syntax on
-
-
 
 
 
@@ -141,13 +143,8 @@ map zf \\w
 map zF \\b
 
 " For A
-map zH :AS<cr>
-map zV :AV<cr>
-
-" For conque
-map zh :ConqueTermSplit zsh<cr>
-map zv :ConqueTermVSplit zsh<cr>
-
+map zh :AS<cr>
+map zv :AV<cr>
 
 
 
@@ -170,18 +167,12 @@ let Tlist_File_Fold_Auto_Close=1
 let Tlist_GainFocus_On_ToggleOpen=1
 
 
-"        Powerline
-let $PYTHONPATH="/usr/lib/python3.3/site-packages"
-set encoding=utf8
-set langmenu=zh_CN.utf-8
-language messages zh_CN.utf-8
-let g:Powerline_symbols='fancy'
-let Powerline_symbols='compatible'
-
-
 "        Fenc View
 let g:fencview_autodetect = 1
 
+
+"        Airline
+let g:airline#extensions#tabline#enabled = 1
 
 
 
