@@ -2,6 +2,9 @@
 # Var
 PL="2"
 
+
+
+
 # Alias
 alias dir='dir -1'
 alias ls='ls --color=auto'
@@ -9,13 +12,18 @@ alias la='ls -AF'
 alias ll='ls -lF'
 alias lla='ls -alF'
 
-alias sudo='sudo '
 alias grep='grep --color=auto'
 alias pacman='pacman --color=auto'
 alias w3m='w3m -cookie'
 
+
+
+
 # Export
 export TIME_STYLE="+%Y-%m-%d %H:%M:%S"
+
+
+
 
 # Command completion
 setopt AUTO_LIST
@@ -24,10 +32,8 @@ setopt MENU_COMPLETE
 autoload -U compinit
 compinit
 
-# PS
-autoload -U promptinit
-promptinit
-setopt prompt_subst
+
+
 
 # Color
 autoload -U colors
@@ -35,10 +41,29 @@ colors
 eval `dircolors ~/.colors`
 
 
+
+
 # PROMPT
-X_FACE="(^_^)"
+
+autoload -U promptinit
+promptinit
+setopt prompt_subst
+
+XB_FACE="(^_^)"
+
+X_FACE="%{$fg_bold[white]%}$XB_FACE%{$reset_color%}"
+X_URNM="%{$fg_bold[red]%}%n%{$reset_color%}"
+X_MCNM="%{$fg_bold[cyan]%}%M%{$reset_color%}"
+X_CLON="%{$fg_bold[white]%}:%{$reset_color%}"
+X_PATH="%{$fg_bold[green]%}%~%{$reset_color%}"
+X_NTLN="%{$fg_bold[yellow]%}==>%{$reset_color%}"
+X_NTMD="%{$fg_bold[yellow]%}=>%{$reset_color%}"
+X_NTST="%{$fg_bold[yellow]%}>%{$reset_color%}"
+X_TIME="%{$fg_no_bold[magenta]%}20%D %*%{$reset_color%}"
+
 
 if [[ $PL == "2" ]]; then
+
   git_info() {
     local gitrev="$(git rev-parse --git-dir 2>/dev/null)"
     if [[ "$gitrev" == "" ]]; then
@@ -52,28 +77,31 @@ if [[ $PL == "2" ]]; then
 
   mid_space() {
     local len
-    (( len = ${COLUMNS} - ${#${(%):-.$X_FACE %n@%M:%~20%D %*}} ))
+    (( len = ${COLUMNS} - ${#${(%):-.$XB_FACE %n@%M:%~20%D %*}} ))
     printf " "%.0s {1..$len}
   }
 
-  PROMPT='%{$fg_bold[white]%}$X_FACE%{$reset_color%} %{$fg_bold[red]%}%n%{$fg_bold[white]%}@%{$fg_bold[cyan]%}%M%{$reset_color%}%{$fg_bold[white]%}: %{$fg_bold[green]%}%~%{$reset_color%}  $(git_info)
- %{$fg_bold[yellow]%}==>%{$reset_color%} '
-  PROMPT2='   > '
-  RPROMPT='%{$fg_no_bold[magenta]%}20%D %*%{$reset_color%}'
+  PROMPT="$X_FACE $X_URNM@$X_MCNM$X_CLON $X_PATH  \$(git_info)
+ $X_NTLN "
+  PROMPT2="   $X_NTST "
+  RPROMPT=$X_TIME
 
 else
 
-  PROMPT='%{$fg_bold[white]%}$X_FACE%{$reset_color%}%{$fg_bold[green]%}%~%{$reset_color%} %{$fg_bold[yellow]%}=>%{$reset_color%} '
-  PROMPT2=' %{$fg_bold[yellow]%}>%{$reset_color%} '
-  RPROMPT='%{$fg_no_bold[magenta]%}20%D %*%{$reset_color%}'
+  PROMPT="$X_FACE$X_PATH $X_NTMD "
+  PROMPT2=" $X_NTST "
+  RPROMPT=$X_TIME
 
 fi
+
+
 
 
 # History
 export HISTFILE=~/.zsh_history
 export HISTSIZE=10000
 export SAVEHIST=10000
+
 
 
 
@@ -90,7 +118,6 @@ is42(){
     [[ $ZSH_VERSION == 4.<2->* || $ZSH_VERSION == <5->* ]] && return 0
     return 1
 }
-
 
 # completion system
 #
@@ -262,6 +289,6 @@ grmlcomp() {
     compdef _hosts upgrade
 }
 
-
 is4    && grmlcomp
+
 
