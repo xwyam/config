@@ -100,7 +100,7 @@ set noshowmode      " NO Show input mode
 
 set noswapfile      " No swap file
 
-set completeopt=menu,preview,longest
+"set completeopt=menu,preview,longest
 
 
 
@@ -129,6 +129,12 @@ map zN :%s/\([0-9a-zA-Z_]\)\([%^&*\-=+\|<>]\{1}=\?\)\([0-9a-zA-Z\-~*&$@_]\)/\1\ 
 " For buffers
 map bn :bnext<cr>
 map bp :bprevious<cr>
+map bx :bdelete<cr>
+
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 
 " For TagList
 map tl :TlistToggle<cr>
@@ -197,12 +203,7 @@ endif
 "          For GVIM            "
 """"""""""""""""""""""""""""""""
 
-if has("gui_running")
-
-  let g:isGUI = 1
-  colorscheme torte
-  au GUIEnter * simalt ~x
-  set guifont=Lucida_Console:h12
-
-endif
+colorscheme torte
+au GUIEnter * simalt ~x
+set guifont=Lucida_Console:h12
 
