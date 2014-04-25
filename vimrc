@@ -203,7 +203,12 @@ endif
 "          For GVIM            "
 """"""""""""""""""""""""""""""""
 
-colorscheme torte
-au GUIEnter * simalt ~x
-set guifont=Lucida_Console:h12
+if has("gui_running")
+
+  let g:isGUI = 1
+  colorscheme torte
+  au GUIEnter * simalt ~x
+  set guifont=Lucida_Console:h12
+
+endif
 
