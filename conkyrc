@@ -88,13 +88,13 @@ ${font Monkey\-Fingers:size=13}Storage State ${font} $hr
  ${diskiograph_read /dev/sda 20,120 000000}  ${diskiograph_write /dev/sda 20,120 000000}
 ${font Monkey\-Fingers:size=13}Network State ${font} $hr
 ${if_existing /proc/net/route ppp0} Network Interface: ${alignr} ppp0
- MAC Address: ${alignr}  ${exec ifconfig eth0 | grep '00:2' | sed -e 's/^.*00\:/00\:/' | sed -e 's/\ .*$//'}
+ MAC Address: ${alignr}  ${exec ifconfig eth0 | grep 'ether' | awk ' { print $2 } ' }
  IPv4 Address: ${alignr} ${addr ppp0}
  Up: ${upspeed ppp0}/s ${alignr} Down:${downspeed ppp0}/s
  ${upspeedgraph ppp0 20,120} ${alignr}${downspeedgraph ppp0 20,120}${color}
  Total: ${totalup ppp0} ${alignr} Total: ${totaldown ppp0}${color}
 ${else}${if_existing /proc/net/route eth0} Network Interface: ${alignr} eth0
- MAC Address: ${alignr}  ${exec ifconfig eth0 | grep '00:2' | sed -e 's/^.*00\:/00\:/' | sed -e 's/\ .*$//'}
+ MAC Address: ${alignr}  ${exec ifconfig eth0 | grep 'ether' | awk ' { print $2 } ' }
  IPv4 Address: ${alignr} ${addr eth0}
 # IPv6 Address:
 # ${font Morpheus:size=10} ${alignr} ${exec ifconfig eth0 | grep 'Global' | sed '1!d' | sed -e 's/^\ *inet6\ .*:\ //' | sed -e 's/\ .*$//'}${font}
@@ -102,7 +102,7 @@ ${else}${if_existing /proc/net/route eth0} Network Interface: ${alignr} eth0
  ${upspeedgraph eth0 20,120} ${alignr}${downspeedgraph eth0 20,120}${color}
  Total: ${totalup eth0} ${alignr} Total: ${totaldown eth0}${color}
 ${else}${if_existing /proc/net/route wlan0} Network Interface: ${alignr} wlan0
- MAC Address: ${alignr} ${exec ifconfig wlan0 | grep '00:2' | sed -e 's/^.*00\:/00\:/' | sed -e 's/\ .*$//'}
+ MAC Address: ${alignr} ${exec ifconfig wlan0 | grep 'ether' | awk ' { print $2 } ' }
  ESSID: ${alignr} ${exec iwconfig wlan0 | grep 'ESSID' | sed 's/"//g' | sed 's/^.*://'}
  IPv4 Address: ${alignr} ${exec ifconfig wlan0 | grep inet\  | awk ' { print $2 } '}
  Up: ${upspeed wlan0}/s ${alignr} Down:${downspeed wlan0}/s
