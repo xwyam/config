@@ -1,4 +1,4 @@
-
+﻿
 " .vimrc
 " See: http://vimdoc.sourceforge.net/htmldoc/options.html for details
 
@@ -122,19 +122,22 @@ syntax on
 map fd i <esc>ll
 
 " Remove the space appear in line tail.
-map zS :%s/\s*$//g<cr>:noh<cr>
-map zC :%s/\([,;]\)\ *\([^\s]\)/\1\ \2/g<cr>:noh<cr>
-map zN :%s/\([0-9a-zA-Z_]\)\([%^&*\-=+\|<>]\{1}=\?\)\([0-9a-zA-Z\-~*&$@_]\)/\1\ \2\ \3/g<cr>
+map <F2> :%s/\([^\s]\)\s*$/\1/g<cr>:noh<cr>
 
 " For buffers
 map bn :bnext<cr>
 map bp :bprevious<cr>
 map bx :bdelete<cr>
 
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+map <C-h> <C-w><
+map <C-j> <C-w>+
+map <C-k> <C-w>-
+map <C-l> <C-w>>
+map zh <C-w>h
+map zj <C-w>j
+map zk <C-w>k
+map zl <C-w>l
+map <C-x> :only<cr>
 
 " For TagList
 map tl :TlistToggle<cr>
@@ -150,8 +153,8 @@ map zf \\w
 map zF \\b
 
 " For A
-map zh :AS<cr>
-map zv :AV<cr>
+map zah :AS<cr>
+map zav :AV<cr>
 
 
 
@@ -208,6 +211,7 @@ if has("gui_running")
   let g:isGUI = 1
   colorscheme torte
   au GUIEnter * simalt ~x
+  set go=
   set guifont=Lucida_Console:h12
 
 endif
