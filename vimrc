@@ -1,4 +1,4 @@
-﻿
+
 " .vimrc
 " See: http://vimdoc.sourceforge.net/htmldoc/options.html for details
 
@@ -125,13 +125,13 @@ map fd i <esc>ll
 map <F2> :%s/\([^\s]\)\s*$/\1/g<cr>:noh<cr>
 
 " For buffers
-map bn :bnext<cr>
-map bp :bprevious<cr>
-map bx :bdelete<cr>
+map zbn :bnext<cr>
+map zbp :bprevious<cr>
+map zbx :bdelete<cr>
 
 map <C-h> <C-w><
-map <C-j> <C-w>+
-map <C-k> <C-w>-
+map <C-j> <C-w>-
+map <C-k> <C-w>+
 map <C-l> <C-w>>
 map zh <C-w>h
 map zj <C-w>j
