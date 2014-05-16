@@ -11,10 +11,11 @@ alias ls='ls --color=auto'
 alias la='ls -AF'
 alias ll='ls -lF'
 alias lla='ls -alF'
-
 alias grep='grep --color=auto'
+alias sudo='sudo '
 alias pacman='pacman --color=auto'
 alias w3m='w3m -cookie'
+alias minicom="minicom -c on"
 
 
 
