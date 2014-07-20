@@ -3,7 +3,7 @@
 #sudo modprobe vboxnetflt
 
 # ntp time update
-sudo ntpdate cn.pool.ntp.org
+sudo ntpdate 203.117.180.36
 
 # SD card reader
 #sudo modprobe tifm_sd
