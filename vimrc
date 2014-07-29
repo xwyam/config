@@ -122,7 +122,7 @@ syntax on
 map fd i <esc>ll
 
 " Remove the space appear in line tail.
-map <F2> :%s/\([^\s]\)\s*$/\1/g<cr>:noh<cr>
+map <F2> :%s/\s*$//g<cr>:noh<cr>
 
 " For buffers
 map zbn :bnext<cr>
