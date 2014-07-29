@@ -157,6 +157,10 @@ map zah :AS<cr>
 map zav :AV<cr>
 
 
+"" imap
+imap <Nul> <Space>
+
+
 
 
 """"""""""""""""""""""""""""""""
