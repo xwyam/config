@@ -82,6 +82,8 @@ set mouse=a         " Enable the use of the mouse.
 
 "set cursorline      " High light the line where the cursor is.
 
+"set cursorcolumn    " High light the column where the cursor is.
+
 set t_Co=256        " colorful vim
 
 set laststatus=2    " set status bar
@@ -89,14 +91,14 @@ set laststatus=2    " set status bar
                     " 1     display when it is multi-windows
                     " 2     always display
 
-"set foldenable      " code folden
-"set foldmethod=indent
+"set foldmethod=syntax
 "set foldcolumn=4
+"set nofoldenable    " code folden
 
 
 set noerrorbells    " Disable the error bell alert
 
-set noshowmode      " NO Show input mode
+set noshowmode      " Not show input mode
 
 set noswapfile      " No swap file
 
@@ -152,8 +154,8 @@ map zf \\w
 map zF \\b
 
 " For A
-map zah :AS<cr>
-map zav :AV<cr>
+map zhh :AS<cr>
+map zhv :AV<cr>
 
 
 "" imap
