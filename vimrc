@@ -127,7 +127,7 @@ map <F2> :%s/\s*$//g<cr>:noh<cr>
 " For buffers
 map zbn :bnext<cr>
 map zbp :bprevious<cr>
-map zbx :bdelete<cr>
+map <C-x> :bdelete<cr>
 
 map <C-h> <C-w><
 map <C-j> <C-w>-
@@ -137,7 +137,6 @@ map zh <C-w>h
 map zj <C-w>j
 map zk <C-w>k
 map zl <C-w>l
-map <C-x> :only<cr>
 
 " For TagList
 map tl :TlistToggle<cr>
