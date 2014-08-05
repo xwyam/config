@@ -216,10 +216,10 @@ endif
 if has("gui_running")
 
   let g:isGUI = 1
+  set guioptions=
+  set guifont=Lucida_Console:h12
   colorscheme torte
   au GUIEnter * simalt ~x
-  set go=
-  set guifont=Lucida_Console:h12
 
 endif
 
