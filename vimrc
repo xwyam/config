@@ -126,19 +126,22 @@ map fd i <esc>ll
 " Remove the space appear in line tail.
 map <F2> :%s/\s*$//g<cr>:noh<cr>
 
+" Run command
+map zm :!
+
 " For buffers
 map zbn :bnext<cr>
 map zbp :bprevious<cr>
 map <C-x> :bdelete<cr>
 
-map <C-h> <C-w><
-map <C-j> <C-w>-
-map <C-k> <C-w>+
-map <C-l> <C-w>>
-map zh <C-w>h
-map zj <C-w>j
-map zk <C-w>k
-map zl <C-w>l
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+map zh <C-w><
+map zj <C-w>-
+map zk <C-w>+
+map zl <C-w>>
 
 " For TagList
 map tl :TlistToggle<cr>
@@ -156,7 +159,6 @@ map zF \\b
 " For A
 map zhh :AS<cr>
 map zhv :AV<cr>
-
 
 "" imap
 imap <Nul> <Space>
