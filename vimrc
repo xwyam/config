@@ -45,7 +45,7 @@ set ignorecase      " Ignore case in search patterns.
 set smartcase       " Override the 'ignorecase' option if the search pattern
                     " contains upper case characters.
 
-set backspace=2     " Influences the working of <BS>, <Del>, CTRL-W
+set backspace=indent,eol,start     " Influences the working of <BS>, <Del>, CTRL-W
                     " and CTRL-U in Insert mode. This is a list of items,
                     " separated by commas. Each item allows a way to backspace
                     " over something.
@@ -201,7 +201,7 @@ let g:vim_markdown_folding_disabled=1
 
 if has("autocmd")
 
-  autocmd FileType python setlocal tabstop=4 shiftwidth=4 backspace=4
+  autocmd FileType python setlocal tabstop=4 shiftwidth=4 backspace=indent,eol,start
 
   " Save the cursor localtion
   autocmd BufReadPost *
