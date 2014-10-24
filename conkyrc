@@ -90,14 +90,14 @@ ${font Monkey\-Fingers:size=18}Storage State ${font} ${hr}
      /home ${alignr} ${color}${fs_used /home} / ${fs_size /home} ${fs_bar 4  /home}
   Disk Activities:
   Read: ${diskio_read} ${alignr} Write: ${diskio_write}
-  ${diskiograph_read /dev/sda 20,160 000000}${alignr}${diskiograph_write /dev/sda 20,160 000000}
+  ${diskiograph_read /dev/sda 20,150 000000}${alignr}${diskiograph_write /dev/sda 20,150 000000}
 ${font Monkey\-Fingers:size=18}Network State ${font} ${hr}
 ${if_existing /proc/net/route ppp0} Network Interface: ${alignr} ppp0
   MAC Address: ${alignr}  ${exec ifconfig eth0 | grep 'ether' | awk ' { print $2 } ' }
   IPv4 Address: ${alignr} ${addr ppp0}
   NameServer: ${alignr} ${nameserver}
   Up: ${upspeed ppp0}/s ${alignr} Down:${downspeed ppp0}/s
-  ${upspeedgraph ppp0 20,160} ${alignr}${downspeedgraph ppp0 20,160}${color}
+  ${upspeedgraph ppp0 20,150} ${alignr}${downspeedgraph ppp0 20,150}${color}
   Total: ${totalup ppp0} ${alignr} Total: ${totaldown ppp0}${color}
 ${else}${if_existing /proc/net/route eth0} Network Interface: ${alignr} eth0
   MAC Address: ${alignr}  ${exec ifconfig eth0 | grep 'ether' | awk ' { print $2 } ' }
@@ -106,7 +106,7 @@ ${else}${if_existing /proc/net/route eth0} Network Interface: ${alignr} eth0
 #  ${font Morpheus:size=15} ${alignr} ${exec ifconfig eth0 | grep 'Global' | sed '1!d' | sed -e 's/^\ *inet6\ .*:\ //' | sed -e 's/\ .*$//'}${font}
   NameServer: ${alignr} ${nameserver}
   Up: ${upspeed eth0}/s ${alignr} Down:${downspeed eth0}/s
-  ${upspeedgraph eth0 20,160} ${alignr}${downspeedgraph eth0 20,160}${color}
+  ${upspeedgraph eth0 20,150} ${alignr}${downspeedgraph eth0 20,150}${color}
   Total: ${totalup eth0} ${alignr} Total: ${totaldown eth0}${color}
 ${else}${if_existing /proc/net/route wlan0} Network Interface: ${alignr} wlan0
   MAC Address: ${alignr} ${exec ifconfig wlan0 | grep 'ether' | awk ' { print $2 } ' }
@@ -114,7 +114,7 @@ ${else}${if_existing /proc/net/route wlan0} Network Interface: ${alignr} wlan0
   IPv4 Address: ${alignr} ${exec ifconfig wlan0 | grep inet\  | awk ' { print $2 } '}
   NameServer: ${alignr} ${nameserver}
   Up: ${upspeed wlan0}/s ${alignr} Down:${downspeed wlan0}/s
-  ${upspeedgraph wlan0 20,160}${alignr}${downspeedgraph wlan0 20,160}${color}
+  ${upspeedgraph wlan0 20,150}${alignr}${downspeedgraph wlan0 20,150}${color}
   Total: ${totalup wlan0} ${alignr} Total: ${totaldown wlan0}${color}
 ${else} Network Interface: ${alignr} lo
   IPv4 Address: ${alignr} ${addr lo}
