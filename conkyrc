@@ -76,10 +76,10 @@ ${alignc}${nodename} - ${sysname} ${kernel}-${machine}
 ${font Monkey\-Fingers:size=18}Running State ${font} ${hr}
   Uptime:${alignr} ${uptime}
   CPU Temperature: ${alignr} ${acpitemp}°C
-  CPU Usage:         CPU1 ${alignr} ${cpu cpu1}% ${cpubar cpu1 4}
-                               CPU2 ${alignr} ${cpu cpu2}% ${cpubar cpu2 4}
-                               CPU3 ${alignr} ${cpu cpu3}% ${cpubar cpu3 4}
-                               CPU4 ${alignr} ${cpu cpu4}% ${cpubar cpu4 4}
+  CPU Usage:      CPU1 ${alignr} ${cpu cpu1}% ${cpubar cpu1 4}
+                            CPU2 ${alignr} ${cpu cpu2}% ${cpubar cpu2 4}
+                            CPU3 ${alignr} ${cpu cpu3}% ${cpubar cpu3 4}
+                            CPU4 ${alignr} ${cpu cpu4}% ${cpubar cpu4 4}
   RAM Usage:${alignr} ${memperc}% ${membar 4}
       ${processes} processes ${alignr} ${mem} / ${memmax}
 ${font Monkey\-Fingers:size=18}Storage State ${font} ${hr}
