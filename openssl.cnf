@@ -1,0 +1,104 @@
+
+[ ca ]
+default_ca                  = CA_default
+
+
+[ CA_default ]
+dir                         = .
+certs                       = $dir/certs
+crl_dir                     = $dir/crl
+database                    = $dir/ca/ca.db
+new_certs_dir               = $dir/certs
+
+certificate                 = $dir/ca/ca.crt
+serial                      = $dir/ca/ca.serial
+crlnumber                   = $dir/ca/crlnumber
+crl                         = $dir/ca/crl.pem
+private_key                 = $dir/ca/ca.key
+RANDFILE                    = $dir/ca/.rand
+
+x509_extensions             = usr_cert
+name_opt                    = ca_default
+cert_opt                    = ca_default
+
+default_days                = 730
+default_crl_days            = 30
+default_md                  = sha256
+preserve                    = no
+
+policy                      = policy_match
+
+
+[ policy_match ]
+countryName                 = match
+stateOrProvinceName         = optional
+organizationName            = match
+organizationalUnitName      = optional
+commonName                  = supplied
+emailAddress                = supplied
+
+
+[ policy_anything ]
+countryName                 = optional
+stateOrProvinceName         = optional
+localityName                = optional
+organizationName            = optional
+organizationalUnitName      = optional
+commonName                  = supplied
+emailAddress                = optional
+
+
+[ req ]
+default_bits                = 2048
+default_keyfile             = node.key
+distinguished_name          = req_distinguished_name
+x509_extensions             = v3_ca
+default_md                  = sha256
+
+string_mask                 = utf8only
+
+
+[ req_distinguished_name ]
+countryName                 = Country Name (2 letter code)
+countryName_default         = CN
+
+0.organizationName          = Organization Name (eg, company)
+0.organizationName_default  = org_name
+
+commonName                  = Common Name (e.g. server FQDN or YOUR name)
+commonName_default          = common_name
+commonName_max              = 64
+
+emailAddress                = Email Address
+emailAddress_max            = 64
+
+
+[ usr_cert ]
+basicConstraints            = CA:FALSE
+nsComment                   = "OpenSSL Generated Certificate"
+subjectKeyIdentifier        = hash
+authorityKeyIdentifier      = keyid,issuer
+
+
+[ v3_req ]
+basicConstraints            = CA:FALSE
+keyUsage                    = nonRepudiation, digitalSignature, keyEncipherment
+
+
+[ v3_ca ]
+subjectKeyIdentifier        = hash
+authorityKeyIdentifier      = keyid:always,issuer
+basicConstraints            = CA:true
+
+
+[ crl_ext ]
+authorityKeyIdentifier      = keyid:always
+
+
+[ proxy_cert_ext ]
+basicConstraints            = CA:FALSE
+nsComment                   = "OpenSSL Generated Certificate"
+subjectKeyIdentifier        = hash
+authorityKeyIdentifier      = keyid,issuer
+proxyCertInfo               = critical,language:id-ppl-anyLanguage,pathlen:3,policy:foo
+
