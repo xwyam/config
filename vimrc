@@ -157,8 +157,8 @@ map zf \\w
 map zF \\b
 
 " For A
-map zhh :AS<cr>
-map zhv :AV<cr>
+map zah :AS<cr>
+map zav :AV<cr>
 
 "" imap
 imap <Nul> <Space>
