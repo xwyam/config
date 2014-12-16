@@ -130,35 +130,35 @@ map <F2> :%s/\s*$//g<cr>:noh<cr>
 map zm :!
 
 " For buffers
-map zbn :bnext<cr>
-map zbp :bprevious<cr>
-map <C-x> :bdelete<cr>
-
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-map zh <C-w><
-map zj <C-w>-
-map zk <C-w>+
-map zl <C-w>>
+map <C-x> :bdelete<cr>
+map zbn :bnext<cr>
+map zbp :bprevious<cr>
+map zbc :ball<cr>
+map zbh <C-w><
+map zbj <C-w>-
+map zbk <C-w>+
+map zbl <C-w>>
 
 " For TagList
-map tl :TlistToggle<cr>
+map ztl :TlistToggle<cr>
 
 " For NERDTree
-map ft :NERDTreeToggle<cr>
+map znt :NERDTreeToggle<cr>
 
 " For Fenc View
-map ze :FencView<cr>
+map zfv :FencView<cr>
 
 " For easymotion
-map zf \\w
-map zF \\b
+map zg \\w
+map zh \\b
 
 " For A
-map zhh :AS<cr>
-map zhv :AV<cr>
+map zah :AS<cr>
+map zav :AV<cr>
 
 "" imap
 imap <Nul> <Space>
