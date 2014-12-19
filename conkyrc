@@ -110,7 +110,7 @@ ${else}${if_existing /proc/net/route eth0} Network Interface: ${alignr} eth0
   Total: ${totalup eth0} ${alignr} Total: ${totaldown eth0}${color}
 ${else}${if_existing /proc/net/route wlan0} Network Interface: ${alignr} wlan0
   MAC Address: ${alignr} ${exec ifconfig wlan0 | grep 'ether' | awk ' { print $2 } ' }
-  ESSID: ${alignr} ${exec iwconfig wlan0 | grep 'ESSID' | sed 's/"//g' | sed 's/^.*://'}
+  ESSID: ${alignr} ${exec iwconfig wlan0 | grep 'ESSID' | sed 's/"//g' | sed 's/^.*://' | sed 's/\ *$//g' }
   IPv4 Address: ${alignr} ${exec ifconfig wlan0 | grep inet\  | awk ' { print $2 } '}
   NameServer: ${alignr} ${nameserver}
   Up: ${upspeed wlan0}/s ${alignr} Down:${downspeed wlan0}/s
