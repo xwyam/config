@@ -1357,8 +1357,9 @@ function! s:Tlist_Window_Create()
         if s:tlist_winsize_chgd == -1
             " Open a vertically split window. Increase the window size, if
             " needed, to accomodate the new window
-            if g:Tlist_Inc_Winwidth &&
-                        \ &columns < (80 + g:Tlist_WinWidth)
+            if 0                                    " by xw_y_am
+"            if g:Tlist_Inc_Winwidth &&
+"                        \ &columns < (80 + g:Tlist_WinWidth)
                 " Save the original window position
                 let s:tlist_pre_winx = getwinposx()
                 let s:tlist_pre_winy = getwinposy()
