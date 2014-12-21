@@ -1,4 +1,4 @@
-" MIT License. Copyright (c) 2013-2014 Bailey Ling.
+" MIT License. Copyright (c) 2013 Bailey Ling.
 " vim: et ts=2 sts=2 sw=2
 
 function! s:check_defined(variable, default)
@@ -76,10 +76,9 @@ function! airline#init#bootstrap()
         \ 'accent': 'red',
         \ })
   call airline#parts#define_raw('file', '%f%m')
-  call airline#parts#define_raw('linenr', '%{g:airline_symbols.linenr}%#__accent_bold#%4l%#__restore__#')
+  call airline#parts#define_raw('linenr', (g:airline_symbols.linenr).'%#__accent_bold#%4l%#__restore__#')
   call airline#parts#define_function('ffenc', 'airline#parts#ffenc')
   call airline#parts#define_empty(['hunks', 'branch', 'tagbar', 'syntastic', 'eclim', 'whitespace'])
-  call airline#parts#define_text('capslock', '')
 
   unlet g:airline#init#bootstrapping
 endfunction
@@ -87,7 +86,7 @@ endfunction
 function! airline#init#sections()
   let spc = g:airline_symbols.space
   if !exists('g:airline_section_a')
-    let g:airline_section_a = airline#section#create_left(['mode', 'paste', 'capslock', 'iminsert'])
+    let g:airline_section_a = airline#section#create_left(['mode', 'paste', 'iminsert'])
   endif
   if !exists('g:airline_section_b')
     let g:airline_section_b = airline#section#create(['hunks', 'branch'])

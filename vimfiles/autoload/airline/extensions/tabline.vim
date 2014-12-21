@@ -1,13 +1,10 @@
-" MIT License. Copyright (c) 2013-2014 Bailey Ling.
+" MIT License. Copyright (c) 2013 Bailey Ling.
 " vim: et ts=2 sts=2 sw=2
 
 let s:formatter = get(g:, 'airline#extensions#tabline#formatter', 'default')
 let s:excludes = get(g:, 'airline#extensions#tabline#excludes', [])
 let s:tab_nr_type = get(g:, 'airline#extensions#tabline#tab_nr_type', 0)
 let s:show_buffers = get(g:, 'airline#extensions#tabline#show_buffers', 1)
-let s:show_tab_nr = get(g:, 'airline#extensions#tabline#show_tab_nr', 1)
-let s:show_tab_type = get(g:, 'airline#extensions#tabline#show_tab_type', 1)
-let s:close_symbol = get(g:, 'airline#extensions#tabline#close_symbol', 'X')
 
 let s:builder_context = {
       \ 'active'        : 1,
@@ -24,44 +21,25 @@ endif
 
 let s:buf_min_count = get(g:, 'airline#extensions#tabline#buffer_min_count', 0)
 let s:tab_min_count = get(g:, 'airline#extensions#tabline#tab_min_count', 0)
-let s:spc = g:airline_symbols.space
 
 function! airline#extensions#tabline#init(ext)
   if has('gui_running')
     set guioptions-=e
   endif
 
-  autocmd User AirlineToggledOn call s:toggle_on()
-  autocmd User AirlineToggledOff call s:toggle_off()
-  autocmd BufDelete * let s:current_bufnr = -1
-
-  call s:toggle_on()
-  call a:ext.add_theme_func('airline#extensions#tabline#load_theme')
-endfunction
-
-function! s:toggle_off()
-  if exists('s:original_tabline')
-    let &tabline = s:original_tabline
-    let &showtabline = s:original_showtabline
-  endif
-endfunction
-
-function! s:toggle_on()
-  let [ s:original_tabline, s:original_showtabline ] = [ &tabline, &showtabline ]
-
   set tabline=%!airline#extensions#tabline#get()
+
   if s:buf_min_count <= 0 && s:tab_min_count <= 1
     set showtabline=2
   else
-    augroup airline_tabline
-      autocmd!
-      if s:show_buffers == 1
-        autocmd CursorMoved * call <sid>on_cursormove(s:buf_min_count, len(s:get_buffer_list()))
-      else
-        autocmd TabEnter * call <sid>on_cursormove(s:tab_min_count, tabpagenr('$'))
-      endif
-    augroup END
+    if s:show_buffers == 1
+      autocmd CursorMoved * call <sid>on_cursormove(s:buf_min_count, len(s:get_buffer_list()))
+    else
+      autocmd TabEnter * call <sid>on_cursormove(s:tab_min_count, tabpagenr('$'))
+    endif
   endif
+
+  call a:ext.add_theme_func('airline#extensions#tabline#load_theme')
 endfunction
 
 function! airline#extensions#tabline#load_theme(palette)
@@ -93,12 +71,7 @@ function! s:on_cursormove(min_count, total_count)
 endfunction
 
 function! airline#extensions#tabline#get()
-  let curtabcnt = tabpagenr('$')
-  if curtabcnt != s:current_tabcnt
-    let s:current_tabcnt = curtabcnt
-    let s:current_bufnr = -1  " force a refresh...
-  endif
-  if s:show_buffers && curtabcnt == 1
+  if s:show_buffers && tabpagenr('$') == 1
     return s:get_buffers()
   else
     return s:get_tabs()
@@ -112,7 +85,7 @@ function! airline#extensions#tabline#title(n)
 endfunction
 
 function! airline#extensions#tabline#get_buffer_name(nr)
-  return airline#extensions#tabline#{s:formatter}#format(a:nr, get(s:, 'current_buffer_list', s:get_buffer_list()))
+  return airline#extensions#tabline#formatters#{s:formatter}(a:nr, get(s:, 'current_buffer_list', []))
 endfunction
 
 function! s:get_buffer_list()
@@ -188,20 +161,9 @@ function! s:get_visible_buffers()
   return buffers
 endfunction
 
-let s:current_bufnr = -1
-let s:current_tabnr = -1
-let s:current_tabcnt = -1
-let s:current_tabline = ''
-let s:current_modified = 0
 function! s:get_buffers()
-  let cur = bufnr('%')
-  if cur == s:current_bufnr
-    if !g:airline_detect_modified || getbufvar(cur, '&modified') == s:current_modified
-      return s:current_tabline
-    endif
-  endif
-
   let b = airline#builder#new(s:builder_context)
+  let cur = bufnr('%')
   let tab_bufs = tabpagebuflist(tabpagenr())
   for nr in s:get_visible_buffers()
     if nr < 0
@@ -214,7 +176,6 @@ function! s:get_buffers()
       else
         let group = 'airline_tabsel'
       endif
-      let s:current_modified = (group == 'airline_tabmod') ? 1 : 0
     else
       if index(tab_bufs, nr) > -1
         let group = 'airline_tab'
@@ -222,30 +183,19 @@ function! s:get_buffers()
         let group = 'airline_tabhid'
       endif
     endif
-    call b.add_section(group, s:spc.'%(%{airline#extensions#tabline#get_buffer_name('.nr.')}%)'.s:spc)
+    call b.add_section(group, '%( %{airline#extensions#tabline#get_buffer_name('.nr.')} %)')
   endfor
 
   call b.add_section('airline_tabfill', '')
   call b.split()
   call b.add_section('airline_tabtype', ' buffers ')
-
-  let s:current_bufnr = cur
-  let s:current_tabline = b.build()
-  return s:current_tabline
+  return b.build()
 endfunction
 
 function! s:get_tabs()
-  let curbuf = bufnr('%')
-  let curtab = tabpagenr()
-  if curbuf == s:current_bufnr && curtab == s:current_tabnr
-    if !g:airline_detect_modified || getbufvar(curbuf, '&modified') == s:current_modified
-      return s:current_tabline
-    endif
-  endif
-
   let b = airline#builder#new(s:builder_context)
   for i in range(1, tabpagenr('$'))
-    if i == curtab
+    if i == tabpagenr()
       let group = 'airline_tabsel'
       if g:airline_detect_modified
         for bi in tabpagebuflist(i)
@@ -254,31 +204,22 @@ function! s:get_tabs()
           endif
         endfor
       endif
-      let s:current_modified = (group == 'airline_tabmod') ? 1 : 0
     else
       let group = 'airline_tab'
     endif
     let val = '%('
-    if s:show_tab_nr
-      if s:tab_nr_type == 0
-        let val .= ' %{len(tabpagebuflist('.i.'))}'
-      else
-        let val .= (g:airline_symbols.space).i
-      endif
+    if s:tab_nr_type == 0
+      let val .= ' %{len(tabpagebuflist('.i.'))}'
+    else
+      let val .= (g:airline_symbols.space).i
     endif
     call b.add_section(group, val.'%'.i.'T %{airline#extensions#tabline#title('.i.')} %)')
   endfor
-
   call b.add_raw('%T')
   call b.add_section('airline_tabfill', '')
   call b.split()
-  call b.add_section('airline_tab', ' %999X'.s:close_symbol.' ')
-  if s:show_tab_type
-    call b.add_section('airline_tabtype', ' tabs ')
-  endif
-
-  let s:current_bufnr = curbuf
-  let s:current_tabnr = curtab
-  let s:current_tabline = b.build()
-  return s:current_tabline
+  call b.add_section('airline_tab', ' %999XX ')
+  call b.add_section('airline_tabtype', ' tabs ')
+  return b.build()
 endfunction
+
