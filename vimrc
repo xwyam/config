@@ -201,7 +201,9 @@ let g:vim_markdown_folding_disabled=1
 
 if has("autocmd")
 
-  autocmd FileType python setlocal tabstop=4 shiftwidth=4 backspace=indent,eol,start
+  " set tabstop length for special files
+  autocmd FileType python,mkd
+    \ setlocal tabstop=4 shiftwidth=4
 
   " Save the cursor localtion
   autocmd BufReadPost *
