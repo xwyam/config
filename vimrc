@@ -95,7 +95,6 @@ set laststatus=2    " set status bar
 "set foldcolumn=4
 "set nofoldenable    " code folden
 
-
 set noerrorbells    " Disable the error bell alert
 
 set noshowmode      " Not show input mode
@@ -189,9 +188,6 @@ let g:fencview_autodetect = 1
 "        Airline
 let g:airline#extensions#tabline#enabled = 1
 
-"        Markdonw
-let g:vim_markdown_folding_disabled=1
-
 
 
 
@@ -201,9 +197,11 @@ let g:vim_markdown_folding_disabled=1
 
 if has("autocmd")
 
-  " set tabstop length for special files
-  autocmd FileType python,mkd
-    \ setlocal tabstop=4 shiftwidth=4
+  " Register new file type
+  autocmd BufNewFile,BufRead *.md,*.mkd set filetype=markdown
+
+  " Special setting for different type files
+  autocmd FileType python,mkd set tabstop=4 shiftwidth=4
 
   " Save the cursor localtion
   autocmd BufReadPost *
