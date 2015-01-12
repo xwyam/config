@@ -152,8 +152,8 @@ map znt :NERDTreeToggle<cr>
 map zfv :FencView<cr>
 
 " For easymotion
-map zg \\w
-map zh \\b
+map zh \\w
+map zg \\b
 
 " For A
 map zah :AS<cr>
