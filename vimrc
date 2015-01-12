@@ -209,6 +209,12 @@ if has("autocmd")
     \   exe "normal! g`\"" |
     \ endif
 
+  " Load vim setting file in current directory
+  autocmd BufReadPost *
+    \ if filereadable( "rc.vim" ) |
+    \   source ./rc.vim |
+    \ endif
+
 endif
 
 
