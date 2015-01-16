@@ -188,6 +188,9 @@ let g:fencview_autodetect = 1
 "        Airline
 let g:airline#extensions#tabline#enabled = 1
 
+"        Markdonw
+let g:vim_markdown_folding_disabled=1
+
 
 
 
