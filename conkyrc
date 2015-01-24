@@ -42,8 +42,8 @@ draw_shades no
 extra_newline no
 gap_x 15
 gap_y 25
-maximum_width 450
-minimum_size 185 0
+maximum_width 330
+minimum_size 330 0
 net_avg_samples 2
 no_buffers yes
 out_to_console no
