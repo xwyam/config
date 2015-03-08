@@ -117,5 +117,4 @@ ${else}${if_existing /proc/net/route wlan0} Network Interface: ${alignr} wlan0
   ${upspeedgraph wlan0 20,150}${alignr}${downspeedgraph wlan0 20,150}${color}
   Total: ${totalup wlan0} ${alignr} Total: ${totaldown wlan0}${color}
 ${else} Network Interface: ${alignr} lo
-  IPv4 Address: ${alignr} ${addr lo}
-${endif}
+  IPv4 Address: ${alignr} ${addr lo}${endif}
