@@ -93,7 +93,7 @@ set laststatus=2    " set status bar
 
 "set foldmethod=syntax
 "set foldcolumn=4
-"set nofoldenable    " code folden
+set nofoldenable    " code folden
 
 set noerrorbells    " Disable the error bell alert
 
