@@ -1,0 +1,9 @@
+[user]
+	name = xw_y_am
+	email = xw_y_am@163.com
+[core]
+	editor = vim
+[color]
+	ui = true
+[push]
+	default = simple
