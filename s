@@ -31,3 +31,7 @@ sudo ntpdate 203.117.180.36
 #wpa_passphrase ##id## ##passwd## >> wpa_supplicant.conf
 #wpa_supplicant -B -Dwext -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
 #dhcpcd wlan0
+
+# wake on lan
+sudo ethtool -s eth0 wol g
+
