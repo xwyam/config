@@ -2,7 +2,6 @@
 " FILE: autoload/EasyMotion/command_line.vim
 " AUTHOR: haya14busa
 " Reference: https://github.com/osyo-manga/vim-over
-" Last Change: 01 Feb 2014.
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
 "     a copy of this software and associated documentation files (the
@@ -31,17 +30,28 @@ set cpo&vim
 " }}}
 
 " CommandLine:
-let s:cmdline = vital#of("easymotion").import("Over.Commandline")
-let s:search = s:cmdline.make_plain("/")
-let s:search.highlights.prompt = "Question"
+let s:V = vital#of('easymotion')
+let s:cmdline = s:V.import('Over.Commandline.Base')
+let s:modules = s:V.import("Over.Commandline.Modules")
+let s:search = s:cmdline.make()
+let s:search.highlights.prompt = 'Question'
 
 " Add Module: {{{
-call s:search.connect(s:cmdline.module_delete())
-call s:search.connect(s:cmdline.module_cursor_move())
-call s:search.connect(s:cmdline.module_paste())
-call s:search.connect(s:cmdline.module_buffer_complete())
-call s:search.connect(s:cmdline.module_history("/"))
-call s:search.connect(s:cmdline.module_no_insert_special_chars())
+call s:search.connect('Exit')
+call s:search.connect('Cancel')
+call s:search.connect('Redraw')
+call s:search.connect('DrawCommandline')
+call s:search.connect('Delete')
+call s:search.connect('CursorMove')
+call s:search.connect('Paste')
+call s:search.connect('BufferComplete')
+call s:search.connect('InsertRegister')
+call s:search.connect('ExceptionExit')
+call s:search.connect(s:modules.get('ExceptionMessage').make('EasyMotion: ', 'echom'))
+call s:search.connect(s:modules.get('History').make('/'))
+call s:search.connect(s:modules.get('NoInsert').make_special_chars())
+call s:search.connect(s:modules.get('KeyMapping').make_emacs())
+call s:search.connect(s:modules.get('Doautocmd').make('EMCommandLine'))
 
 let s:module = {
 \   "name" : "EasyMotion",
@@ -70,41 +80,88 @@ call s:search.connect(s:module)
 "}}}
 
 " CommandLine Keymap: {{{
-let s:default_key_mapping = {
-\   "\<C-d>"   : "<Over>(buffer-complete)",
-\   "\<Tab>"   : "<Over>(em-scroll-f)",
-\   "\<S-Tab>" : "<Over>(em-scroll-b)",
-\   "\<C-o>"   : "<Over>(em-jumpback)",
-\   "\<C-z>"   : "<Over>(em-openallfold)",
-\}
-function! EasyMotion#command_line#keymaps() "{{{
-    return extend(deepcopy(s:default_key_mapping),
-                \ g:EasyMotion_command_line_key_mappings)
+function! s:search.keymapping() "{{{
+    return {
+\       "\<C-l>" : {
+\           "key" : "<Over>(buffer-complete)",
+\           "noremap" : 1,
+\       },
+\       "\<Tab>"   : {
+\           "key" : "<Over>(em-scroll-f)",
+\           "noremap" : 1,
+\       },
+\       "\<S-Tab>" : {
+\           "key" : "<Over>(em-scroll-b)",
+\           "noremap" : 1,
+\       },
+\       "\<C-o>"   : {
+\           "key" : "<Over>(em-jumpback)",
+\           "noremap" : 1,
+\       },
+\       "\<C-z>"   : {
+\           "key" : "<Over>(em-openallfold)",
+\           "noremap" : 1,
+\       },
+\       "\<CR>"   : {
+\           "key" : "<Over>(exit)",
+\           "noremap" : 1,
+\           "lock" : 1,
+\       },
+\   }
 endfunction "}}}
-function! s:search.keymappings() "{{{
-    return EasyMotion#command_line#keymaps()
-endfunction "}}}
+
+" Fins Motion CommandLine Mapping Command: {{{
+function! EasyMotion#command_line#cmap(args)
+    let lhs = s:as_keymapping(a:args[0])
+    let rhs = s:as_keymapping(a:args[1])
+    call s:search.cmap(lhs, rhs)
+endfunction
+function! EasyMotion#command_line#cnoremap(args)
+    let lhs = s:as_keymapping(a:args[0])
+    let rhs = s:as_keymapping(a:args[1])
+    call s:search.cnoremap(lhs, rhs)
+endfunction
+function! EasyMotion#command_line#cunmap(lhs)
+    let lhs = s:as_keymapping(a:lhs)
+    call s:search.cunmap(lhs)
+endfunction
+function! s:as_keymapping(key)
+    execute 'let result = "' . substitute(a:key, '\(<.\{-}>\)', '\\\1', 'g') . '"'
+    return result
+endfunction
+"}}}
 "}}}
 
 " Event: {{{
-function! s:search.on_enter() "{{{
+function! s:search.on_enter(cmdline) "{{{
     if s:num_strokes == -1
         call EasyMotion#highlight#delete_highlight()
-        let shade_hl_re = '\_.*'
-        call EasyMotion#highlight#add_highlight(shade_hl_re, g:EasyMotion_hl_group_shade)
-        call EasyMotion#highlight#add_highlight('\%#', g:EasyMotion_hl_inc_cursor)
+        call EasyMotion#helper#VarReset('&scrolloff', 0)
+        if g:EasyMotion_do_shade
+            call EasyMotion#highlight#add_highlight('\_.*',
+                                                \ g:EasyMotion_hl_group_shade)
+        endif
+    endif
+    if g:EasyMotion_cursor_highlight
+        call EasyMotion#highlight#add_highlight('\%#',
+                                              \ g:EasyMotion_hl_inc_cursor)
     endif
 endfunction "}}}
-function! s:search.on_leave() "{{{
-    call EasyMotion#highlight#delete_highlight(g:EasyMotion_hl_inc_search)
+function! s:search.on_leave(cmdline) "{{{
+    if s:num_strokes == -1
+        call EasyMotion#highlight#delete_highlight(g:EasyMotion_hl_inc_search)
+    endif
 endfunction "}}}
-function! s:search.on_char() "{{{
+function! s:search.on_char(cmdline) "{{{
     if s:num_strokes == -1
         let re = s:search.getline()
+        if EasyMotion#helper#should_case_sensitive(re, 1)
+            let case_flag = '\c'
+        else
+            let case_flag = '\C'
+        endif
+        let re .= case_flag
         if g:EasyMotion_inc_highlight
-            let case_flag = EasyMotion#helper#should_use_smartcase(re) ?
-                            \ '\c' : '\C'
-            let re .= case_flag
             call s:inc_highlight(re)
         endif
         if g:EasyMotion_off_screen_search
@@ -114,17 +171,14 @@ function! s:search.on_char() "{{{
         call s:search.exit()
     endif
 endfunction "}}}
-function! s:search.on_cancel() "{{{
-    call s:Cancell()
-    call s:search.setline('')
-endfunction "}}}
 "}}}
 
 " Main:
 function! EasyMotion#command_line#GetInput(num_strokes, prev, direction) "{{{
     let s:num_strokes = a:num_strokes
 
-    let s:search.prompt = s:getPromptMessage(a:num_strokes)
+    let s:prompt_base = s:getPromptMessage(a:num_strokes)
+    call s:search.set_prompt(s:prompt_base)
 
     " Screen: cursor position, first and last line
     let s:orig_pos = getpos('.')
@@ -139,6 +193,9 @@ function! EasyMotion#command_line#GetInput(num_strokes, prev, direction) "{{{
     let input = s:search.get()
     if input == '' && ! s:search.exit_code()
         return a:prev
+    elseif s:search.exit_code() == 1 || s:search.exit_code() == -1
+        call s:Cancell()
+        return ''
     else
         return input
     endif
@@ -147,6 +204,7 @@ endfunction "}}}
 " Helper:
 function! s:Cancell() " {{{
     call EasyMotion#highlight#delete_highlight()
+    call EasyMotion#helper#VarReset('&scrolloff')
     keepjumps call setpos('.', s:save_orig_pos)
     echo 'EasyMotion: Cancelled'
     return ''
@@ -194,6 +252,7 @@ function! s:off_screen_search(re) "{{{
             keepjumps call setpos('.', s:orig_pos)
         endif
     endif
+    " redraw
 endfunction "}}}
 function! s:adjust_screen() "{{{
     if s:save_direction != 'b'

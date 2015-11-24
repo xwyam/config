@@ -63,6 +63,7 @@ endfunction
 
 
 function! s:module.complete(cmdline)
+	call s:_finish()
 	let s:old_statusline = &statusline
 
 	let backward = a:cmdline.backward()
@@ -93,19 +94,25 @@ function! s:_finish()
 	if exists("s:old_statusline")
 		let &statusline = s:old_statusline
 		unlet s:old_statusline
+		redrawstatus
 	endif
 endfunction
 
 
 function! s:module.on_char_pre(cmdline)
 	if a:cmdline.is_input("<Over>(buffer-complete)")
+\		|| a:cmdline.is_input("<Over>(buffer-complete-prev)")
 		if self.complete(a:cmdline) == -1
 			call s:_finish()
 			call a:cmdline.setchar('')
 			return
 		endif
+		if a:cmdline.is_input("<Over>(buffer-complete-prev)")
+			let s:count = len(s:complete_list) - 1
+		endif
 		call a:cmdline.setchar('')
-		call a:cmdline.wait_keyinput_on("Completion")
+		call a:cmdline.tap_keyinput("Completion")
+" 	elseif a:cmdline.is_input("\<Tab>", "Completion")
 	elseif a:cmdline.is_input("<Over>(buffer-complete)", "Completion")
 \		|| a:cmdline.is_input("\<Right>", "Completion")
 		call a:cmdline.setchar('')
@@ -113,15 +120,16 @@ function! s:module.on_char_pre(cmdline)
 		if s:count >= len(s:complete_list)
 			let s:count = 0
 		endif
-	elseif a:cmdline.is_input("\<Left>", "Completion")
+	elseif a:cmdline.is_input("<Over>(buffer-complete-prev)", "Completion")
+\		|| a:cmdline.is_input("\<Left>", "Completion")
 		call a:cmdline.setchar('')
 		let s:count -= 1
 		if s:count < 0
 			let s:count = len(s:complete_list) - 1
 		endif
 	else
-		if a:cmdline.wait_keyinput_off("Completion")
-			call a:cmdline._on_char_pre()
+		if a:cmdline.untap_keyinput("Completion")
+			call a:cmdline.callevent("on_char_pre")
 		endif
 		call s:_finish()
 		return
@@ -130,14 +138,21 @@ function! s:module.on_char_pre(cmdline)
 	call a:cmdline.insert(s:complete_list[s:count], s:pos)
 	if len(s:complete_list) > 1
 		let &statusline = s:_as_statusline(s:complete_list, s:count)
+		redrawstatus
 	endif
 	if len(s:complete_list) == 1
-		call a:cmdline.wait_keyinput_off("Completion")
+		call a:cmdline.untap_keyinput("Completion")
 	endif
 endfunction
 
 
+function! s:module.on_draw_pre(...)
+" 	redrawstatus
+endfunction
+
+
 function! s:module.on_leave(cmdline)
+	call s:_finish()
 	unlet! s:complete
 endfunction
 
