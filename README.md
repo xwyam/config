@@ -1,8 +1,10 @@
-####20-radeon.conf
+
+#### 20-radeon.conf
 ATI video card
 
-####colors
+#### colors
 file name color used for bashrc or zshrc
 
-####s
+#### shell.sh
 some useful command
+
