@@ -5,7 +5,6 @@ then
 
   if [ $1 = "zsh" ]
   then
-
     ./configure \
 #      --enable-etcdir=/etc/zsh \
 #      --enable-zshenv=/etc/zsh/zshenv \
@@ -23,12 +22,10 @@ then
       --enable-pcre \
       --enable-cap \
       --enable-zsh-secure-free
-
   fi
 
   if [ $1 = "vim" ]
   then
-
     ./configure \
       --with-features=huge \
       --enable-gpm \
@@ -43,19 +40,14 @@ then
       --disable-python3interp \
       --disable-rubyinterp \
       --disable-luainterp
-
   fi
-  
-  
+
+
   if [ $1 = "git" ]
   then
-  
     ./configure \
       --without-tcltk
-  
   fi
-  
 
 fi
-
 
