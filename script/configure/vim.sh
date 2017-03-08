@@ -1,0 +1,14 @@
+./configure \
+  --with-features=huge \
+  --enable-gpm \
+  --enable-acl \
+  --with-x=no \
+  --disable-gui \
+  --enable-multibyte \
+  --enable-cscope \
+  --disable-netbeans \
+  --disable-perlinterp \
+  --enable-pythoninterp \
+  --disable-python3interp \
+  --disable-rubyinterp \
+  --disable-luainterp
