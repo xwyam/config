@@ -54,6 +54,7 @@ autoload -U promptinit
 promptinit
 setopt prompt_subst
 
+
 XB_FACE="(^_^)"
 
 X_FACE="%{$fg_bold[white]%}$XB_FACE%{$reset_color%}"
@@ -61,10 +62,19 @@ X_URNM="%{$fg_bold[red]%}%n%{$reset_color%}"
 X_MCNM="%{$fg_bold[cyan]%}%M%{$reset_color%}"
 X_CLON="%{$fg_bold[white]%}:%{$reset_color%}"
 X_PATH="%{$fg_bold[green]%}%~%{$reset_color%}"
-X_NTLN="%{$fg_bold[yellow]%}==>%{$reset_color%}"
-X_NTMD="%{$fg_bold[yellow]%}=>%{$reset_color%}"
-X_NTST="%{$fg_bold[yellow]%}>%{$reset_color%}"
 X_TIME="%{$fg_no_bold[magenta]%}20%D %*%{$reset_color%}"
+
+if [ `whoami` = 'root' ]
+then
+  X_NTLN="%{$fg_bold[red]%}==>%{$reset_color%}"
+  X_NTMD="%{$fg_bold[red]%}=>%{$reset_color%}"
+  X_NTST="%{$fg_bold[red]%}>%{$reset_color%}"
+else
+  X_NTLN="%{$fg_bold[yellow]%}==>%{$reset_color%}"
+  X_NTMD="%{$fg_bold[yellow]%}=>%{$reset_color%}"
+  X_NTST="%{$fg_bold[yellow]%}>%{$reset_color%}"
+fi
+
 
 
 if [[ $PL == "2" ]]; then
