@@ -1,9 +1,5 @@
-
-# Var
-PL="2"
-
-
-
+# xw_y_am zshell config
+# 2017-05-21
 
 # Alias
 alias dir='dir -1'
@@ -14,20 +10,15 @@ alias lla='ls -AlF'
 alias grep='grep --color=auto'
 alias sudo='sudo '
 alias pacman='pacman --color=auto'
-alias w3m='w3m -cookie'
-alias minicom="minicom -c on"
-
-
+#alias w3m='w3m -cookie'
+#alias minicom="minicom -c on"
 
 
 # Export
 export TIME_STYLE="+%Y-%m-%d %H:%M:%S"
 export GCC_COLORS="error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01"
-export PATH=$PATH:/opt/rpi/tools/arm-bcm2708/arm-bcm2708hardfp-linux-gnueabi/bin/
-#export LANG=zh_CN.UTF-8
-#export LANGUAGE=zh_CN:zh
-
-
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US:zh_CN
 
 
 # Command completion
@@ -38,18 +29,13 @@ autoload -U compinit
 compinit
 
 
-
-
 # Color
 autoload -U colors
 colors
 eval `dircolors ~/.colors`
 
 
-
-
 # PROMPT
-
 autoload -U promptinit
 promptinit
 setopt prompt_subst
@@ -76,6 +62,7 @@ else
 fi
 
 
+PL = 2  # 2 line
 
 if [[ $PL == "2" ]]; then
 
@@ -110,20 +97,15 @@ else
 fi
 
 
-
-
 # History
 export HISTFILE=~/.zsh_history
 export HISTSIZE=10000
 export SAVEHIST=10000
 
 
-
-
-## the part of completion system is from Archlinux /etc/zsh/zshrc
+# the part of completion system is from Archlinux /etc/zsh/zshrc
 
 # prepare for completion system
-
 is4(){
     [[ $ZSH_VERSION == <4->* ]] && return 0
     return 1
@@ -304,6 +286,5 @@ grmlcomp() {
     compdef _hosts upgrade
 }
 
-is4    && grmlcomp
-
+is4 && grmlcomp
 
