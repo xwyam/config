@@ -90,32 +90,32 @@ ${font Monkey\-Fingers:size=18}Storage State ${font} ${hr}
      /boot ${alignr} ${fs_used /boot} / ${fs_size /boot} ${fs_bar 4 /boot}
      / ${alignr} ${fs_used /} / ${fs_size /} ${fs_bar 4 /}
      swap ${alignr} ${swap} / ${swapmax} ${swapbar 4}
-#     /home ${alignr} ${color}${fs_used /home} / ${fs_size /home} ${fs_bar 4  /home}
+#     /home ${alignr} ${fs_used /home} / ${fs_size /home} ${fs_bar 4  /home}
   Disk Activities:
   Read: ${diskio_read} ${alignr} Write: ${diskio_write}
   ${diskiograph_read /dev/sda 20,150 000000}${alignr}${diskiograph_write /dev/sda 20,150 000000}
 
 ${font Monkey\-Fingers:size=18}Network State ${font} ${hr}
-${if_existing /proc/net/route ppp0} Network Interface: ${alignr} ppp0
+${if_up ppp0} Network Interface: ${alignr} ppp0
   MAC Address: ${alignr}  ${exec ip addr show dev enp2s0 | grep 'ether' | awk ' { print $2 } ' }
   IPv4 Address: ${alignr} ${addr ppp0}
   NameServer: ${alignr} ${nameserver}
   Up: ${upspeed ppp0}/s ${alignr} Down:${downspeed ppp0}/s
-  ${upspeedgraph ppp0 20,150} ${alignr}${downspeedgraph ppp0 20,150}${color}
-  Total: ${totalup ppp0} ${alignr} Total: ${totaldown ppp0}${color}${else}${if_existing /proc/net/route enp2s0} Network Interface: ${alignr} enp2s0
+  ${upspeedgraph ppp0 20,150} ${alignr}${downspeedgraph ppp0 20,150}
+  Total: ${totalup ppp0} ${alignr} Total: ${totaldown ppp0}${else}${if_up enp2s0} Network Interface: ${alignr} enp2s0
   MAC Address: ${alignr}  ${exec ip addr show dev enp2s0 | grep 'ether' | awk ' { print $2 } ' }
   IPv4 Address: ${alignr} ${addr enp2s0}
 #  IPv6 Address:
 #  ${font Morpheus:size=15} ${alignr} ${exec ip addr show dev enp2s0 | grep 'Global' | sed '1!d' | sed -e 's/^\ *inet6\ .*:\ //' | sed -e 's/\ .*$//'}${font}
   NameServer: ${alignr} ${nameserver}
   Up: ${upspeed enp2s0}/s ${alignr} Down:${downspeed enp2s0}/s
-  ${upspeedgraph enp2s0 20,150} ${alignr}${downspeedgraph enp2s0 20,150}${color}
-  Total: ${totalup enp2s0} ${alignr} Total: ${totaldown enp2s0}${color}${else}${if_existing /proc/net/route wlp3s0} Network Interface: ${alignr} wlp3s0
+  ${upspeedgraph enp2s0 20,150} ${alignr}${downspeedgraph enp2s0 20,150}
+  Total: ${totalup enp2s0} ${alignr} Total: ${totaldown enp2s0}${else}${if_up /proc/net/route wlp3s0} Network Interface: ${alignr} wlp3s0
   MAC Address: ${alignr} ${exec ip addr show dev wlp3s0 | grep 'ether' | awk ' { print $2 } ' }
 #  ESSID: ${alignr} ${exec iwconfig wlp3s0 | grep 'ESSID' | sed 's/"//g' | sed 's/^.*://' | sed 's/\ *$//g' }
   IPv4 Address: ${alignr} ${exec ip addr show dev wlp3s0 | grep 'inet ' | awk ' { print $2 } '}
   NameServer: ${alignr} ${nameserver}
   Up: ${upspeed wlp3s0}/s ${alignr} Down:${downspeed wlp3s0}/s
-  ${upspeedgraph wlp3s0 20,150}${alignr}${downspeedgraph wlp3s0 20,150}${color}
-  Total: ${totalup wlp3s0} ${alignr} Total: ${totaldown wlp3s0}${color}${else} Network Interface: ${alignr} lo
-  IPv4 Address: ${alignr} ${addr lo}${endif}
+  ${upspeedgraph wlp3s0 20,150}${alignr}${downspeedgraph wlp3s0 20,150}
+  Total: ${totalup wlp3s0} ${alignr} Total: ${totaldown wlp3s0}${else} Network Interface: ${alignr} lo
+  IPv4 Address: ${alignr} ${addr lo}${endif}${endif}${endif}
