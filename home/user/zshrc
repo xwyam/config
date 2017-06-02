@@ -62,7 +62,7 @@ else
 fi
 
 
-PL = 2  # 2 line
+PL="2"  # 2 line
 
 if [[ $PL == "2" ]]; then
 
