@@ -2,14 +2,15 @@
 # 2017-05-21
 
 # Alias
-alias dir='dir -1'
+alias dir='dir -1'                    # disable @ macOS
+alias sudo='sudo '                    # disable @ macOS
 alias ls='ls --color=auto'
+#alias ls='ls -G'                     # use -G @ macOS
 alias la='ls -AF'
 alias ll='ls -lF'
 alias lla='ls -AlF'
 alias grep='grep --color=auto'
-alias sudo='sudo '
-alias pacman='pacman --color=auto'
+#alias pacman='pacman --color=auto'
 #alias w3m='w3m -cookie'
 #alias minicom="minicom -c on"
 
@@ -32,7 +33,7 @@ compinit
 # Color
 autoload -U colors
 colors
-eval `dircolors ~/.colors`
+eval `dircolors ~/.colors`        # disable @ macOS
 
 
 # PROMPT
@@ -287,4 +288,4 @@ grmlcomp() {
 }
 
 is4 && grmlcomp
-
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
