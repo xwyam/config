@@ -70,6 +70,8 @@ set laststatus=2    " set status bar
 
 "set mouse=a         " Enable the use of the mouse.
 
+set nocompatible    " For Vundle
+
 set noerrorbells    " Disable the error bell alert
 
 set nofoldenable    " code folden
@@ -111,10 +113,34 @@ set textwidth=65536 " Maximum width of text that is being inserted. A longer
 
 
 """"""""""""""""""""""""""""""""
-"             CMD              "
+"             Set              "
 """"""""""""""""""""""""""""""""
-filetype plugin indent on
 syntax on
+
+
+
+
+""""""""""""""""""""""""""""""""
+"           Vundle             "
+""""""""""""""""""""""""""""""""
+
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'bling/vim-airline'
+Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'scrooloose/nerdtree'
+Plugin 'mbbill/fencview'
+
+call vundle#end()
+filetype plugin indent on
 
 
 
