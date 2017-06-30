@@ -1,11 +1,11 @@
 # xw_y_am zshell config
-# 2017-05-21
+# 2017-06-30
 
 # Alias
-alias dir='dir -1'                    # disable @ macOS
-alias sudo='sudo '                    # disable @ macOS
-alias ls='ls --color=auto'
-#alias ls='ls -G'                     # use -G @ macOS
+#alias dir='dir -1'
+#alias sudo='sudo '
+#alias ls='ls --color=auto'
+alias ls='ls -G'
 alias la='ls -AF'
 alias ll='ls -lF'
 alias lla='ls -AlF'
@@ -20,6 +20,7 @@ export TIME_STYLE="+%Y-%m-%d %H:%M:%S"
 export GCC_COLORS="error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01"
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US:zh_CN
+export PATH='/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Wireshark.app/Contents/MacOS'
 
 
 # Command completion
@@ -33,7 +34,7 @@ compinit
 # Color
 autoload -U colors
 colors
-eval `dircolors ~/.colors`        # disable @ macOS
+#eval `dircolors ~/.colors`
 
 
 # PROMPT
@@ -288,4 +289,4 @@ grmlcomp() {
 }
 
 is4 && grmlcomp
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/local/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
