@@ -137,6 +137,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/nerdtree'
 Plugin 'mbbill/fencview'
+Plugin 'rizzatti/dash.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -190,6 +191,9 @@ map ztb :TagbarToggle<cr>
 nnoremap zjl :YcmCompleter GoToDeclaration<CR>
 nnoremap zjf :YcmCompleter GoToDefinition<CR>
 nnoremap zjg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" Dash
+nmap <C-d> <Plug>DashSearch
 
 
 
