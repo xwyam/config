@@ -1,9 +1,0 @@
-[Unit]
-Description=Run costum scripts on boot.
-
-[Service]
-ExecStart=/opt/init.sh
-Type=oneshot
-
-[Install]
-WantedBy=multi-user.target

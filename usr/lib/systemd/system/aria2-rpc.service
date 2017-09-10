@@ -1,0 +1,13 @@
+[Unit]
+Description=Run aria2 with rpc mode on boot.
+After=network.target syslog.target remote-fs.target nss-lookup.target
+
+[Service]
+User=xwy
+Group=xwy
+ExecStart=/usr/bin/aria2c --rpc-allow-origin-all -j 100 --conf-path=/etc/aria2.conf
+ExecStop=/usr/bin/kill -s QUIT $MAINPID
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
