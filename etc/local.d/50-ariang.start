@@ -1,0 +1,1 @@
+/usr/bin/aria2c --rpc-allow-origin-all -j 100 --conf-path=/etc/aria2.conf
