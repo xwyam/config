@@ -1,0 +1,2 @@
+/dev/sda*		none		swap		sw		0 0
+none			/tmp		tmpfs		nodev,nosuid	0 0
