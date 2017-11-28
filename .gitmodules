@@ -1,3 +1,0 @@
-[submodule "usr/share/zsh"]
-	path = usr/share/zsh
-	url = https://github.com/zsh-users/zsh-autosuggestions.git
