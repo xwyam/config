@@ -1,0 +1,2 @@
+app-editors/vim python
+>=app-eselect/eselect-php-0.9.2 apache2
