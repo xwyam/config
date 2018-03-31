@@ -1,9 +1,0 @@
-[submodule "home/user/vim/bundle/Vundle"]
-	path = home/user/vim/bundle/Vundle
-	url = https://github.com/VundleVim/Vundle.vim.git
-[submodule "usr/share/zsh/zsh-autosuggestions"]
-	path = usr/share/zsh/zsh-autosuggestions
-	url = https://github.com/zsh-users/zsh-autosuggestions.git
-[submodule "usr/share/zsh/pm"]
-	path = usr/share/zsh/pm
-	url = https://github.com/Angelmmiguel/pm.git
