@@ -8,7 +8,8 @@ source $config_dir/exports.zsh
 source $config_dir/completion.zsh
 source $config_dir/prompt.zsh
 
-plugin_dir="/opt/config/zsh"
+plugin_dir=$config_dir"/plugins"
 
+source $plugin_dir/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $plugin_dir/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $plugin_dir/pm/zsh/pm.zsh

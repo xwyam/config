@@ -1,10 +1,19 @@
-alias ls='ls --color=auto'
-#alias ls='ls -G'
+case $(uname) in
+  'Linux')
+    alias ls='ls --color=auto'
+    alias dir='dir -1'
+    ;;
+  'Darwin')
+    alias ls='ls -G'
+    ;;
+  *)
+    ;;
+esac
+
+
 alias la='ls -AF'
 alias ll='ls -lF'
 alias lla='ls -AlF'
-
-#alias dir='dir -1'
 
 alias sudo='sudo '
 

@@ -4,7 +4,6 @@
 [core]
 	editor = vim
 	eol = lf
-	excludesfile = /Users/xwy/.gitignore_global
 [color]
 	ui = true
 [push]
