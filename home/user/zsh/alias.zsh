@@ -18,7 +18,7 @@ alias lla='ls -AlF'
 alias sudo='sudo '
 
 alias grep='grep --color=auto'
-#alias pacman='pacman --color=auto'
+alias pacman='pacman --color=auto'
 
 #alias w3m='w3m -cookie'
 #alias minicom="minicom -c on"
