@@ -5,6 +5,7 @@ config_dir=$(echo $HOME)"/.zsh"
 
 source $config_dir/alias.zsh
 source $config_dir/exports.zsh
+source $config_dir/function.zsh
 source $config_dir/completion.zsh
 source $config_dir/prompt.zsh
 
