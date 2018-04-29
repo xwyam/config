@@ -20,6 +20,8 @@ alias grep='grep --color=auto'
 alias pacman='pacman --color=auto'
 
 alias pip='pip3'
+alias pypy='pypy3'
+alias python='python3'
 
 #alias w3m='w3m -cookie'
 #alias minicom="minicom -c on"
