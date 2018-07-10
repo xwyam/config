@@ -75,7 +75,7 @@ set noswapfile      " No swap file
 
 set number          " Show line numbers.
 
-set shiftwidth=2    " Number of spaces to use for each step of (auto)indent.
+set shiftwidth=4    " Number of spaces to use for each step of (auto)indent.
 
 set ruler           " Show the line and column number of the cursor position,
                     " separated by a comma.
@@ -97,12 +97,9 @@ set smartcase       " Override the 'ignorecase' option if the search pattern
 
 set t_Co=256        " colorful vim
 
-set tabstop=2       " Number of spaces that a <Tab> in the file counts for.
+set tabstop=4       " Number of spaces that a <Tab> in the file counts for.
 
 set textwidth=65536 " Maximum width of text that is being inserted. A longer
                     " line will be broken after white space to get this width.
 
-
-
 syntax on
-
