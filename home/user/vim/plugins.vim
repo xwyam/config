@@ -47,4 +47,10 @@ nnoremap zjl :YcmCompleter GoToDeclaration<CR>
 nnoremap zjf :YcmCompleter GoToDefinition<CR>
 nnoremap zjg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
+" to fix ycm err on mac
+if has('mac')
+    if has('python3')
+        silent! python3 1
+    endif
+endif
 
