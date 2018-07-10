@@ -1,22 +1,15 @@
 
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'bling/vim-airline'
-Plugin 'majutsushi/tagbar'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'scrooloose/nerdtree'
-Plugin 'mbbill/fencview'
-
-call vundle#end()
-filetype plugin indent on
+call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-fugitive'
+Plug 'bling/vim-airline'
+Plug 'majutsushi/tagbar'
+Plug 'scrooloose/nerdcommenter'
+Plug 'Valloric/YouCompleteMe'
+Plug 'easymotion/vim-easymotion'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'scrooloose/nerdtree'
+Plug 'mbbill/fencview'
+call plug#end()
 
 
 " Airline
