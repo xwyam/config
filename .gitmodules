@@ -1,9 +1,0 @@
-[submodule "home/user/zsh/plugins/zsh-autosuggestions"]
-	path = home/user/zsh/plugins/zsh-autosuggestions
-	url = https://github.com/zsh-users/zsh-autosuggestions.git
-[submodule "home/user/zsh/plugins/zsh-syntax-highlighting"]
-	path = home/user/zsh/plugins/zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule "home/user/zsh/plugins/pm"]
-	path = home/user/zsh/plugins/pm
-	url = https://github.com/Angelmmiguel/pm.git
