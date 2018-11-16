@@ -1,0 +1,1 @@
+`fastcgi_pass` need to set `listen` path in `php-fpm/www.conf` 
