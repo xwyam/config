@@ -6,9 +6,6 @@
   --disable-gui \
   --enable-multibyte \
   --enable-cscope \
-  --disable-netbeans \
-  --disable-perlinterp \
-  --enable-pythoninterp \
-  --disable-python3interp \
-  --disable-rubyinterp \
-  --disable-luainterp
+  --enable-pythoninterp=yes \
+  #--enable-python3interp=yes \
+  --with-python-command=/bin/python \
