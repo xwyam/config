@@ -1,0 +1,11 @@
+[Unit]
+Description=ttrss_backend
+After=nginx.service mariadb.service rh-php71-php-fpm.service
+
+[Service]
+User=nginx
+Group=nginx
+ExecStart=/srv/web/rss/update_daemon2.php
+
+[Install]
+WantedBy=multi-user.target
