@@ -1,12 +1,10 @@
 case $(uname) in
-  'Linux')
-    alias ls='ls --color=auto'
-    alias dir='dir -1'
-    ;;
   'Darwin')
     alias ls='ls -G'
     ;;
   *)
+    alias ls='ls --color=auto'
+    alias dir='dir -1'
     ;;
 esac
 
