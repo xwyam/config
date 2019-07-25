@@ -15,6 +15,7 @@ alias lla='ls -AlF'
 
 alias sudo='sudo '
 alias grep='grep --color=auto'
+alias rg='rg --colors "match:bg:yellow"'
 
 alias pip='pip3'
 alias pypy='pypy3'

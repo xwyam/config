@@ -1,1 +1,2 @@
-aria2c https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+git clone --depth 1 https://github.com/junegunn/vim-plug
+ln -s vim-plug/plug.vim

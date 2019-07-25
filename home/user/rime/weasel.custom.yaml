@@ -1,0 +1,14 @@
+patch:
+    "style/color_scheme": google
+    "style/horizontal": true
+    "style/font_point": 16
+    app_options:
+        com.apple.Terminal:
+            ascii_mode: false
+            no_inline: false
+        com.github.atom:
+            ascii_mode: false
+        com.googlecode.iterm2:
+            ascii_mode: false
+        com.microsoft.VSCode:
+            ascii_mode: false

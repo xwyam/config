@@ -1,9 +1,10 @@
 [user]
-	name = xw_y_am
-	email = xw_y_am@163.com
+	name = <user_name>
+	email = <email@address>
 [core]
 	editor = vim
 	eol = lf
+	excludesFile = /path/to/gitignore_global
 [color]
 	ui = true
 [push]
